@@ -1,0 +1,1455 @@
+<!-- SEO Meta Content -->
+
+<!DOCTYPE html>
+
+<html
+    lang="id"
+    dir="ltr"
+>
+    <head>
+
+        
+
+        <title>Masuk Pelanggan</title>
+
+        <meta charset="UTF-8">
+
+        <meta
+            http-equiv="X-UA-Compatible"
+            content="IE=edge"
+        >
+        <meta
+            http-equiv="content-language"
+            content="id"
+        >
+
+        <meta
+            name="viewport"
+            content="width=device-width, initial-scale=1"
+        >
+        <meta
+            name="base-url"
+            content="http://127.0.0.1:8000"
+        >
+        <meta
+            name="currency"
+            content="{&quot;id&quot;:1,&quot;code&quot;:&quot;IDR&quot;,&quot;name&quot;:&quot;Rupiah Indonesia&quot;,&quot;symbol&quot;:&quot;Rp&quot;,&quot;decimal&quot;:2,&quot;group_separator&quot;:&quot;,&quot;,&quot;decimal_separator&quot;:&quot;.&quot;,&quot;currency_position&quot;:null,&quot;created_at&quot;:null,&quot;updated_at&quot;:null}"
+        >
+        <meta 
+            name="generator" 
+            content="Bagisto"
+        >
+
+            <meta name="description" content="Masuk Pelanggan"/>
+
+    <meta name="keywords" content="Masuk Pelanggan"/>
+
+        <link
+            rel="icon"
+            sizes="16x16"
+            href="http://127.0.0.1:8000/themes/shop/default/build/assets/favicon-Df9chQdB.ico"
+        />
+
+        <link rel="preload" as="style" href="http://127.0.0.1:8000/themes/shop/default/build/assets/app-iJ5aKmOS.css" /><link rel="preload" as="style" href="http://127.0.0.1:8000/themes/shop/default/build/assets/app-DsP8OK1c.css" /><link rel="modulepreload" as="script" href="http://127.0.0.1:8000/themes/shop/default/build/assets/app-CFawTq4x.js" /><link rel="modulepreload" as="script" href="http://127.0.0.1:8000/themes/shop/default/build/assets/vue-CuzGsaQ5.js" /><link rel="modulepreload" as="script" href="http://127.0.0.1:8000/themes/shop/default/build/assets/vendor-DqIzTJ5W.js" /><link rel="modulepreload" as="script" href="http://127.0.0.1:8000/themes/shop/default/build/assets/veeValidate-COeJZE9g.js" /><link rel="stylesheet" href="http://127.0.0.1:8000/themes/shop/default/build/assets/app-iJ5aKmOS.css" /><link rel="stylesheet" href="http://127.0.0.1:8000/themes/shop/default/build/assets/app-DsP8OK1c.css" /><script type="module" src="http://127.0.0.1:8000/themes/shop/default/build/assets/app-CFawTq4x.js"></script>
+        <link
+            rel="preconnect"
+            href="https://fonts.googleapis.com"
+            crossorigin
+        />
+
+        <link
+            rel="preconnect"
+            href="https://fonts.gstatic.com"
+            crossorigin
+        />
+
+        <link
+            rel="preload" as="style"
+            href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&family=DM+Serif+Display&display=swap"
+        />
+
+        <link
+            rel="stylesheet"
+            href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&family=DM+Serif+Display&display=swap"
+        />
+
+        
+        <style>
+            
+        </style>
+
+                    <script type="speculationrules">
+                {"prerender":[{"source":"document","where":{"and":[{"href_matches":"/*"},{"not":{"href_matches":"/customer/account/*"}},{"not":{"href_matches":"/checkout/*"}}]},"eagerness":"moderate"}]}            </script>
+        
+        
+
+    <script id="browser-logger-active">
+(function() {
+    const ENDPOINT = 'http://127.0.0.1:8000/_boost/browser-logs';
+    const logQueue = [];
+    let flushTimeout = null;
+
+    console.log('🔍 Browser logger active (MCP server detected). Posting to: ' + ENDPOINT);
+
+    // Store original console methods
+    const originalConsole = {
+        log: console.log,
+        info: console.info,
+        error: console.error,
+        warn: console.warn,
+        table: console.table
+    };
+
+    // Helper to safely stringify values
+    function safeStringify(obj) {
+        const seen = new WeakSet();
+        return JSON.stringify(obj, (key, value) => {
+            if (typeof value === 'object' && value !== null) {
+                if (seen.has(value)) return '[Circular]';
+                seen.add(value);
+            }
+            if (value instanceof Error) {
+                return {
+                    name: value.name,
+                    message: value.message,
+                    stack: value.stack
+                };
+            }
+            return value;
+        });
+    }
+
+    // Batch and send logs
+    function flushLogs() {
+        if (logQueue.length === 0) return;
+
+        const batch = logQueue.splice(0, logQueue.length);
+
+        fetch(ENDPOINT, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                'X-Requested-With': 'XMLHttpRequest'
+            },
+            body: JSON.stringify({ logs: batch })
+        }).catch(err => {
+            // Silently fail to avoid infinite loops
+            originalConsole.error('Failed to send logs:', err);
+        });
+    }
+
+    // Debounced flush (100ms)
+    function scheduleFlush() {
+        if (flushTimeout) clearTimeout(flushTimeout);
+        flushTimeout = setTimeout(flushLogs, 100);
+    }
+
+    // Intercept console methods
+    ['log', 'info', 'error', 'warn', 'table'].forEach(method => {
+        console[method] = function(...args) {
+            // Call original method
+            originalConsole[method].apply(console, args);
+
+            // Capture log data
+            try {
+                logQueue.push({
+                    type: method,
+                    timestamp: new Date().toISOString(),
+                    data: args.map(arg => {
+                        try {
+                            return typeof arg === 'object' ? JSON.parse(safeStringify(arg)) : arg;
+                        } catch (e) {
+                            return String(arg);
+                        }
+                    }),
+                    url: window.location.href,
+                    userAgent: navigator.userAgent
+                });
+
+                scheduleFlush();
+            } catch (e) {
+                // Fail silently
+            }
+        };
+    });
+
+    // Global error handlers for uncaught errors
+    const originalOnError = window.onerror;
+    window.onerror = function boostErrorHandler(errorMsg, url, lineNumber, colNumber, error) {
+        try {
+            logQueue.push({
+                type: 'uncaught_error',
+                timestamp: new Date().toISOString(),
+                data: [{
+                    message: errorMsg,
+                    filename: url,
+                    lineno: lineNumber,
+                    colno: colNumber,
+                    error: error ? {
+                        name: error.name,
+                        message: error.message,
+                        stack: error.stack
+                    } : null
+                }],
+                url: window.location.href,
+                userAgent: navigator.userAgent
+            });
+
+            scheduleFlush();
+        } catch (e) {
+            // Fail silently
+        }
+
+        // Call original handler if it exists
+        if (originalOnError && typeof originalOnError === 'function') {
+            return originalOnError(errorMsg, url, lineNumber, colNumber, error);
+        }
+
+        // Let the error continue to propagate
+        return false;
+    }
+    window.addEventListener('error', (event) => {
+        try {
+            logQueue.push({
+                type: 'window_error',
+                timestamp: new Date().toISOString(),
+                data: [{
+                    message: event.message,
+                    filename: event.filename,
+                    lineno: event.lineno,
+                    colno: event.colno,
+                    error: event.error ? {
+                        name: event.error.name,
+                        message: event.error.message,
+                        stack: event.error.stack
+                    } : null
+                }],
+                url: window.location.href,
+                userAgent: navigator.userAgent
+            });
+
+            scheduleFlush();
+        } catch (e) {
+            // Fail silently
+        }
+
+        // Let the error continue to propagate
+        return false;
+    });
+    window.addEventListener('unhandledrejection', (event) => {
+        try {
+            logQueue.push({
+                type: 'error',
+                timestamp: new Date().toISOString(),
+                data: [{
+                    message: 'Unhandled Promise Rejection',
+                    reason: event.reason instanceof Error ? {
+                        name: event.reason.name,
+                        message: event.reason.message,
+                        stack: event.reason.stack
+                    } : event.reason
+                }],
+                url: window.location.href,
+                userAgent: navigator.userAgent
+            });
+
+            scheduleFlush();
+        } catch (e) {
+            // Fail silently
+        }
+
+        // Let the rejection continue to propagate
+        return false;
+    });
+
+    // Flush on page unload
+    window.addEventListener('beforeunload', () => {
+        if (logQueue.length > 0) {
+            navigator.sendBeacon(ENDPOINT, JSON.stringify({ logs: logQueue }));
+        }
+    });
+})();
+</script>
+<link rel='stylesheet' type='text/css' property='stylesheet' href='/_debugbar/assets/stylesheets?v=1782740541' data-turbolinks-eval='false' data-turbo-eval='false'><script src='/_debugbar/assets/javascript?v=1782740541' data-turbolinks-eval='false' data-turbo-eval='false'></script><script data-turbo-eval='false'>jQuery.noConflict(true);</script>
+<script> Sfdump = window.Sfdump || (function (doc) { doc.documentElement.classList.add('sf-js-enabled'); var rxEsc = /([.*+?^${}()|\[\]\/\\])/g, idRx = /\bsf-dump-\d+-ref[012]\w+\b/, keyHint = 0 <= navigator.platform.toUpperCase().indexOf('MAC') ? 'Cmd' : 'Ctrl', addEventListener = function (e, n, cb) { e.addEventListener(n, cb, false); }; if (!doc.addEventListener) { addEventListener = function (element, eventName, callback) { element.attachEvent('on' + eventName, function (e) { e.preventDefault = function () {e.returnValue = false;}; e.target = e.srcElement; callback(e); }); }; } function toggle(a, recursive) { var s = a.nextSibling || {}, oldClass = s.className, arrow, newClass; if (/\bsf-dump-compact\b/.test(oldClass)) { arrow = '▼'; newClass = 'sf-dump-expanded'; } else if (/\bsf-dump-expanded\b/.test(oldClass)) { arrow = '▶'; newClass = 'sf-dump-compact'; } else { return false; } if (doc.createEvent && s.dispatchEvent) { var event = doc.createEvent('Event'); event.initEvent('sf-dump-expanded' === newClass ? 'sfbeforedumpexpand' : 'sfbeforedumpcollapse', true, false); s.dispatchEvent(event); } a.lastChild.innerHTML = arrow; s.className = s.className.replace(/\bsf-dump-(compact|expanded)\b/, newClass); if (recursive) { try { a = s.querySelectorAll('.'+oldClass); for (s = 0; s < a.length; ++s) { if (-1 == a[s].className.indexOf(newClass)) { a[s].className = newClass; a[s].previousSibling.lastChild.innerHTML = arrow; } } } catch (e) { } } return true; }; function collapse(a, recursive) { var s = a.nextSibling || {}, oldClass = s.className; if (/\bsf-dump-expanded\b/.test(oldClass)) { toggle(a, recursive); return true; } return false; }; function expand(a, recursive) { var s = a.nextSibling || {}, oldClass = s.className; if (/\bsf-dump-compact\b/.test(oldClass)) { toggle(a, recursive); return true; } return false; }; function collapseAll(root) { var a = root.querySelector('a.sf-dump-toggle'); if (a) { collapse(a, true); expand(a); return true; } return false; } function reveal(node) { var previous, parents = []; while ((node = node.parentNode || {}) && (previous = node.previousSibling) && 'A' === previous.tagName) { parents.push(previous); } if (0 !== parents.length) { parents.forEach(function (parent) { expand(parent); }); return true; } return false; } function highlight(root, activeNode, nodes) { resetHighlightedNodes(root); Array.from(nodes||[]).forEach(function (node) { if (!/\bsf-dump-highlight\b/.test(node.className)) { node.className = node.className + ' sf-dump-highlight'; } }); if (!/\bsf-dump-highlight-active\b/.test(activeNode.className)) { activeNode.className = activeNode.className + ' sf-dump-highlight-active'; } } function resetHighlightedNodes(root) { Array.from(root.querySelectorAll('.sf-dump-str, .sf-dump-key, .sf-dump-public, .sf-dump-protected, .sf-dump-private')).forEach(function (strNode) { strNode.className = strNode.className.replace(/\bsf-dump-highlight\b/, ''); strNode.className = strNode.className.replace(/\bsf-dump-highlight-active\b/, ''); }); } return function (root, x) { root = doc.getElementById(root); var indentRx = new RegExp('^('+(root.getAttribute('data-indent-pad') || ' ').replace(rxEsc, '\\$1')+')+', 'm'), options = {"maxDepth":1,"maxStringLength":160,"fileLinkFormat":false}, elt = root.getElementsByTagName('A'), len = elt.length, i = 0, s, h, t = []; while (i < len) t.push(elt[i++]); for (i in x) { options[i] = x[i]; } function a(e, f) { addEventListener(root, e, function (e, n) { if ('A' == e.target.tagName) { f(e.target, e); } else if ('A' == e.target.parentNode.tagName) { f(e.target.parentNode, e); } else { n = /\bsf-dump-ellipsis\b/.test(e.target.className) ? e.target.parentNode : e.target; if ((n = n.nextElementSibling) && 'A' == n.tagName) { if (!/\bsf-dump-toggle\b/.test(n.className)) { n = n.nextElementSibling || n; } f(n, e, true); } } }); }; function isCtrlKey(e) { return e.ctrlKey || e.metaKey; } function xpathString(str) { var parts = str.match(/[^'"]+|['"]/g).map(function (part) { if ("'" == part) { return '"\'"'; } if ('"' == part) { return "'\"'"; } return "'" + part + "'"; }); return "concat(" + parts.join(",") + ", '')"; } function xpathHasClass(className) { return "contains(concat(' ', normalize-space(@class), ' '), ' " + className +" ')"; } a('mouseover', function (a, e, c) { if (c) { e.target.style.cursor = "pointer"; } }); a('click', function (a, e, c) { if (/\bsf-dump-toggle\b/.test(a.className)) { e.preventDefault(); if (!toggle(a, isCtrlKey(e))) { var r = doc.getElementById(a.getAttribute('href').slice(1)), s = r.previousSibling, f = r.parentNode, t = a.parentNode; t.replaceChild(r, a); f.replaceChild(a, s); t.insertBefore(s, r); f = f.firstChild.nodeValue.match(indentRx); t = t.firstChild.nodeValue.match(indentRx); if (f && t && f[0] !== t[0]) { r.innerHTML = r.innerHTML.replace(new RegExp('^'+f[0].replace(rxEsc, '\\$1'), 'mg'), t[0]); } if (/\bsf-dump-compact\b/.test(r.className)) { toggle(s, isCtrlKey(e)); } } if (c) { } else if (doc.getSelection) { try { doc.getSelection().removeAllRanges(); } catch (e) { doc.getSelection().empty(); } } else { doc.selection.empty(); } } else if (/\bsf-dump-str-toggle\b/.test(a.className)) { e.preventDefault(); e = a.parentNode.parentNode; e.className = e.className.replace(/\bsf-dump-str-(expand|collapse)\b/, a.parentNode.className); } }); elt = root.getElementsByTagName('SAMP'); len = elt.length; i = 0; while (i < len) t.push(elt[i++]); len = t.length; for (i = 0; i < len; ++i) { elt = t[i]; if ('SAMP' == elt.tagName) { a = elt.previousSibling || {}; if ('A' != a.tagName) { a = doc.createElement('A'); a.className = 'sf-dump-ref'; elt.parentNode.insertBefore(a, elt); } else { a.innerHTML += ' '; } a.title = (a.title ? a.title+'\n[' : '[')+keyHint+'+click] Expand all children'; a.innerHTML += elt.className == 'sf-dump-compact' ? '<span>▶</span>' : '<span>▼</span>'; a.className += ' sf-dump-toggle'; x = 1; if ('sf-dump' != elt.parentNode.className) { x += elt.parentNode.getAttribute('data-depth')/1; } } else if (/\bsf-dump-ref\b/.test(elt.className) && (a = elt.getAttribute('href'))) { a = a.slice(1); elt.className += ' sf-dump-hover'; elt.className += ' '+a; if (/[\[{]$/.test(elt.previousSibling.nodeValue)) { a = a != elt.nextSibling.id && doc.getElementById(a); try { s = a.nextSibling; elt.appendChild(a); s.parentNode.insertBefore(a, s); if (/^[@#]/.test(elt.innerHTML)) { elt.innerHTML += ' <span>▶</span>'; } else { elt.innerHTML = '<span>▶</span>'; elt.className = 'sf-dump-ref'; } elt.className += ' sf-dump-toggle'; } catch (e) { if ('&' == elt.innerHTML.charAt(0)) { elt.innerHTML = '…'; elt.className = 'sf-dump-ref'; } } } } } if (doc.evaluate && Array.from && root.children.length > 1) { root.setAttribute('tabindex', 0); SearchState = function () { this.nodes = []; this.idx = 0; }; SearchState.prototype = { next: function () { if (this.isEmpty()) { return this.current(); } this.idx = this.idx < (this.nodes.length - 1) ? this.idx + 1 : 0; return this.current(); }, previous: function () { if (this.isEmpty()) { return this.current(); } this.idx = this.idx > 0 ? this.idx - 1 : (this.nodes.length - 1); return this.current(); }, isEmpty: function () { return 0 === this.count(); }, current: function () { if (this.isEmpty()) { return null; } return this.nodes[this.idx]; }, reset: function () { this.nodes = []; this.idx = 0; }, count: function () { return this.nodes.length; }, }; function showCurrent(state) { var currentNode = state.current(), currentRect, searchRect; if (currentNode) { reveal(currentNode); highlight(root, currentNode, state.nodes); if ('scrollIntoView' in currentNode) { currentNode.scrollIntoView(true); currentRect = currentNode.getBoundingClientRect(); searchRect = search.getBoundingClientRect(); if (currentRect.top < (searchRect.top + searchRect.height)) { window.scrollBy(0, -(searchRect.top + searchRect.height + 5)); } } } counter.textContent = (state.isEmpty() ? 0 : state.idx + 1) + ' of ' + state.count(); } var search = doc.createElement('div'); search.className = 'sf-dump-search-wrapper sf-dump-search-hidden'; search.innerHTML = ' <input type="text" class="sf-dump-search-input"> <span class="sf-dump-search-count">0 of 0<\/span> <button type="button" class="sf-dump-search-input-previous" tabindex="-1"> <svg viewBox="0 0 1792 1792" xmlns="http://www.w3.org/2000/svg"><path d="M1683 1331l-166 165q-19 19-45 19t-45-19L896 965l-531 531q-19 19-45 19t-45-19l-166-165q-19-19-19-45.5t19-45.5l742-741q19-19 45-19t45 19l742 741q19 19 19 45.5t-19 45.5z"\/><\/svg> <\/button> <button type="button" class="sf-dump-search-input-next" tabindex="-1"> <svg viewBox="0 0 1792 1792" xmlns="http://www.w3.org/2000/svg"><path d="M1683 808l-742 741q-19 19-45 19t-45-19L109 808q-19-19-19-45.5t19-45.5l166-165q19-19 45-19t45 19l531 531 531-531q19-19 45-19t45 19l166 165q19 19 19 45.5t-19 45.5z"\/><\/svg> <\/button> '; root.insertBefore(search, root.firstChild); var state = new SearchState(); var searchInput = search.querySelector('.sf-dump-search-input'); var counter = search.querySelector('.sf-dump-search-count'); var searchInputTimer = 0; var previousSearchQuery = ''; addEventListener(searchInput, 'keyup', function (e) { var searchQuery = e.target.value; /* Don't perform anything if the pressed key didn't change the query */ if (searchQuery === previousSearchQuery) { return; } previousSearchQuery = searchQuery; clearTimeout(searchInputTimer); searchInputTimer = setTimeout(function () { state.reset(); collapseAll(root); resetHighlightedNodes(root); if ('' === searchQuery) { counter.textContent = '0 of 0'; return; } var classMatches = [ "sf-dump-str", "sf-dump-key", "sf-dump-public", "sf-dump-protected", "sf-dump-private", ].map(xpathHasClass).join(' or '); var xpathResult = doc.evaluate('.//span[' + classMatches + '][contains(translate(child::text(), ' + xpathString(searchQuery.toUpperCase()) + ', ' + xpathString(searchQuery.toLowerCase()) + '), ' + xpathString(searchQuery.toLowerCase()) + ')]', root, null, XPathResult.ORDERED_NODE_ITERATOR_TYPE, null); while (node = xpathResult.iterateNext()) state.nodes.push(node); showCurrent(state); }, 400); }); Array.from(search.querySelectorAll('.sf-dump-search-input-next, .sf-dump-search-input-previous')).forEach(function (btn) { addEventListener(btn, 'click', function (e) { e.preventDefault(); -1 !== e.target.className.indexOf('next') ? state.next() : state.previous(); searchInput.focus(); collapseAll(root); showCurrent(state); }) }); addEventListener(root, 'keydown', function (e) { var isSearchActive = !/\bsf-dump-search-hidden\b/.test(search.className); if ((114 === e.keyCode && !isSearchActive) || (isCtrlKey(e) && 70 === e.keyCode)) { /* F3 or CMD/CTRL + F */ if (70 === e.keyCode && document.activeElement === searchInput) { /* * If CMD/CTRL + F is hit while having focus on search input, * the user probably meant to trigger browser search instead. * Let the browser execute its behavior: */ return; } e.preventDefault(); search.className = search.className.replace(/\bsf-dump-search-hidden\b/, ''); searchInput.focus(); } else if (isSearchActive) { if (27 === e.keyCode) { /* ESC key */ search.className += ' sf-dump-search-hidden'; e.preventDefault(); resetHighlightedNodes(root); searchInput.value = ''; } else if ( (isCtrlKey(e) && 71 === e.keyCode) /* CMD/CTRL + G */ || 13 === e.keyCode /* Enter */ || 114 === e.keyCode /* F3 */ ) { e.preventDefault(); e.shiftKey ? state.previous() : state.next(); collapseAll(root); showCurrent(state); } } }); } if (0 >= options.maxStringLength) { return; } try { elt = root.querySelectorAll('.sf-dump-str'); len = elt.length; i = 0; t = []; while (i < len) t.push(elt[i++]); len = t.length; for (i = 0; i < len; ++i) { elt = t[i]; s = elt.innerText || elt.textContent; x = s.length - options.maxStringLength; if (0 < x) { h = elt.innerHTML; elt[elt.innerText ? 'innerText' : 'textContent'] = s.substring(0, options.maxStringLength); elt.className += ' sf-dump-str-collapse'; elt.innerHTML = '<span class=sf-dump-str-collapse>'+h+'<a class="sf-dump-ref sf-dump-str-toggle" title="Collapse"> ◀</a></span>'+ '<span class=sf-dump-str-expand>'+elt.innerHTML+'<a class="sf-dump-ref sf-dump-str-toggle" title="'+x+' remaining characters"> ▶</a></span>'; } } } catch (e) { } }; })(document); </script><style> .sf-js-enabled .phpdebugbar pre.sf-dump .sf-dump-compact, .sf-js-enabled .sf-dump-str-collapse .sf-dump-str-collapse, .sf-js-enabled .sf-dump-str-expand .sf-dump-str-expand { display: none; } .sf-dump-hover:hover { background-color: #B729D9; color: #FFF !important; border-radius: 2px; } .phpdebugbar pre.sf-dump { display: block; white-space: pre; padding: 5px; overflow: initial !important; } .phpdebugbar pre.sf-dump:after { content: ""; visibility: hidden; display: block; height: 0; clear: both; } .phpdebugbar pre.sf-dump .sf-dump-ellipsization { display: inline-flex; } .phpdebugbar pre.sf-dump a { text-decoration: none; cursor: pointer; border: 0; outline: none; color: inherit; } .phpdebugbar pre.sf-dump img { max-width: 50em; max-height: 50em; margin: .5em 0 0 0; padding: 0; background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAAAAAA6mKC9AAAAHUlEQVQY02O8zAABilCaiQEN0EeA8QuUcX9g3QEAAjcC5piyhyEAAAAASUVORK5CYII=) #D3D3D3; } .phpdebugbar pre.sf-dump .sf-dump-ellipsis { text-overflow: ellipsis; white-space: nowrap; overflow: hidden; } .phpdebugbar pre.sf-dump .sf-dump-ellipsis-tail { flex-shrink: 0; } .phpdebugbar pre.sf-dump code { display:inline; padding:0; background:none; } .sf-dump-public.sf-dump-highlight, .sf-dump-protected.sf-dump-highlight, .sf-dump-private.sf-dump-highlight, .sf-dump-str.sf-dump-highlight, .sf-dump-key.sf-dump-highlight { background: rgba(111, 172, 204, 0.3); border: 1px solid #7DA0B1; border-radius: 3px; } .sf-dump-public.sf-dump-highlight-active, .sf-dump-protected.sf-dump-highlight-active, .sf-dump-private.sf-dump-highlight-active, .sf-dump-str.sf-dump-highlight-active, .sf-dump-key.sf-dump-highlight-active { background: rgba(253, 175, 0, 0.4); border: 1px solid #ffa500; border-radius: 3px; } .phpdebugbar pre.sf-dump .sf-dump-search-hidden { display: none !important; } .phpdebugbar pre.sf-dump .sf-dump-search-wrapper { font-size: 0; white-space: nowrap; margin-bottom: 5px; display: flex; position: -webkit-sticky; position: sticky; top: 5px; } .phpdebugbar pre.sf-dump .sf-dump-search-wrapper > * { vertical-align: top; box-sizing: border-box; height: 21px; font-weight: normal; border-radius: 0; background: #FFF; color: #757575; border: 1px solid #BBB; } .phpdebugbar pre.sf-dump .sf-dump-search-wrapper > input.sf-dump-search-input { padding: 3px; height: 21px; font-size: 12px; border-right: none; border-top-left-radius: 3px; border-bottom-left-radius: 3px; color: #000; min-width: 15px; width: 100%; } .phpdebugbar pre.sf-dump .sf-dump-search-wrapper > .sf-dump-search-input-next, .phpdebugbar pre.sf-dump .sf-dump-search-wrapper > .sf-dump-search-input-previous { background: #F2F2F2; outline: none; border-left: none; font-size: 0; line-height: 0; } .phpdebugbar pre.sf-dump .sf-dump-search-wrapper > .sf-dump-search-input-next { border-top-right-radius: 3px; border-bottom-right-radius: 3px; } .phpdebugbar pre.sf-dump .sf-dump-search-wrapper > .sf-dump-search-input-next > svg, .phpdebugbar pre.sf-dump .sf-dump-search-wrapper > .sf-dump-search-input-previous > svg { pointer-events: none; width: 12px; height: 12px; } .phpdebugbar pre.sf-dump .sf-dump-search-wrapper > .sf-dump-search-count { display: inline-block; padding: 0 5px; margin: 0; border-left: none; line-height: 21px; font-size: 12px; }.phpdebugbar pre.sf-dump, .phpdebugbar pre.sf-dump .sf-dump-default{word-wrap: break-word; white-space: pre-wrap; word-break: normal}.phpdebugbar pre.sf-dump .sf-dump-num{font-weight:bold; color:#1299DA}.phpdebugbar pre.sf-dump .sf-dump-const{font-weight:bold}.phpdebugbar pre.sf-dump .sf-dump-str{font-weight:bold; color:#3A9B26}.phpdebugbar pre.sf-dump .sf-dump-note{color:#1299DA}.phpdebugbar pre.sf-dump .sf-dump-ref{color:#7B7B7B}.phpdebugbar pre.sf-dump .sf-dump-public{color:#000000}.phpdebugbar pre.sf-dump .sf-dump-protected{color:#000000}.phpdebugbar pre.sf-dump .sf-dump-private{color:#000000}.phpdebugbar pre.sf-dump .sf-dump-meta{color:#B729D9}.phpdebugbar pre.sf-dump .sf-dump-key{color:#3A9B26}.phpdebugbar pre.sf-dump .sf-dump-index{color:#1299DA}.phpdebugbar pre.sf-dump .sf-dump-ellipsis{color:#A0A000}.phpdebugbar pre.sf-dump .sf-dump-virtual{font-style:italic}.phpdebugbar pre.sf-dump .sf-dump-ns{user-select:none;}.phpdebugbar pre.sf-dump .sf-dump-ellipsis-note{color:#1299DA}.phpdebugbar[data-theme='dark'] pre.sf-dump, pre.sf-dump .sf-dump-default{background-color:#18171B; color:#FF8400; line-height:1.2em; font:12px Menlo, Monaco, Consolas, monospace; word-wrap: break-word; white-space: pre-wrap; position:relative; z-index:99999; word-break: break-all}.phpdebugbar[data-theme='dark'] pre.sf-dump .sf-dump-num{font-weight:bold; color:#1299DA}.phpdebugbar[data-theme='dark'] pre.sf-dump .sf-dump-const{font-weight:bold}.phpdebugbar[data-theme='dark'] pre.sf-dump .sf-dump-virtual{font-style:italic}.phpdebugbar[data-theme='dark'] pre.sf-dump .sf-dump-str{font-weight:bold; color:#56DB3A}.phpdebugbar[data-theme='dark'] pre.sf-dump .sf-dump-note{color:#1299DA}.phpdebugbar[data-theme='dark'] pre.sf-dump .sf-dump-ref{color:#A0A0A0}.phpdebugbar[data-theme='dark'] pre.sf-dump .sf-dump-public{color:#FFFFFF}.phpdebugbar[data-theme='dark'] pre.sf-dump .sf-dump-protected{color:#FFFFFF}.phpdebugbar[data-theme='dark'] pre.sf-dump .sf-dump-private{color:#FFFFFF}.phpdebugbar[data-theme='dark'] pre.sf-dump .sf-dump-meta{color:#B729D9}.phpdebugbar[data-theme='dark'] pre.sf-dump .sf-dump-key{color:#56DB3A}.phpdebugbar[data-theme='dark'] pre.sf-dump .sf-dump-index{color:#1299DA}.phpdebugbar[data-theme='dark'] pre.sf-dump .sf-dump-ellipsis{color:#FF8400}.phpdebugbar[data-theme='dark'] pre.sf-dump .sf-dump-ns{user-select:none;}.phpdebugbar[data-theme='dark'] pre.sf-dump .sf-dump-ellipsis-note{color:#1299DA}</style>
+</head>
+
+    <body>
+        
+
+        <a
+            href="#main"
+            class="skip-to-main-content-link"
+        >
+            Skip to main content
+        </a>
+
+        <!-- Built With Bagisto -->
+        <div id="app">
+            <!-- Flash Message Blade Component -->
+            <v-flash-group ref='flashes'></v-flash-group>
+
+
+            <!-- Confirm Modal Blade Component -->
+            <v-modal-confirm ref="confirmModal"></v-modal-confirm>
+
+
+            <!-- Page Header Blade Component -->
+            
+            
+            
+
+            <!-- Page Content Blade Component -->
+            <main id="main" class="bg-white">
+                <!-- Page Title -->
+     
+    <div class="container mt-20 max-1180:px-5 max-md:mt-12">
+        
+
+        <!-- Company Logo -->
+        <div class="flex items-center gap-x-14 max-[1180px]:gap-x-9">
+            <a
+                href="http://127.0.0.1:8000"
+                class="m-[0_auto_20px_auto]"
+                aria-label="Bagisto"
+            >
+                <img
+                    src="http://127.0.0.1:8000/themes/shop/default/build/assets/logo-CZWQQgOF.svg"
+                    alt="Ayapremiumisme"
+                    width="131"
+                    height="29"
+                >
+            </a>
+        </div>
+
+        
+
+        <!-- Form Container -->
+        <div class="m-auto w-full max-w-[870px] rounded-xl border border-zinc-200 p-16 px-[90px] max-md:px-8 max-md:py-8 max-sm:border-none max-sm:p-0">
+            <h1 class="font-dmserif text-4xl max-md:text-3xl max-sm:text-xl">
+                Masuk Pelanggan            </h1>
+
+            <p class="mt-4 text-xl text-zinc-500 max-sm:mt-0 max-sm:text-sm">
+                Jika Anda sudah memiliki akun, masuk dengan alamat email Anda.            </p>
+
+            
+
+            <div class="mt-14 rounded max-sm:mt-8">
+                <!--
+    If a component has the `as` attribute, it indicates that it uses
+    the ajaxified form or some customized slot form.
+-->
+    
+    
+    <v-form
+        method="POST"
+        :initial-errors="[]"
+        v-slot="{ meta, errors }"
+        @invalid-submit="onInvalidSubmit"
+        action="http://127.0.0.1:8000/customer/login"
+    >
+                    <input type="hidden" name="_token" value="jubsPtb0f2t0GVqmQqlsPxj6dZVMHdQIZA5f8406" autocomplete="off">        
+        
+        <!-- Email -->
+                    <div class="mb-4">
+    <label class="mb-2 block text-base max-sm:text-sm max-sm:mb-1 required">
+    Email
+</label>
+
+                        <v-field
+            v-slot="{ field, errors }"
+            rules="required|email" value="" label="Email"
+            name="email"
+        >
+            <input
+                type="email"
+                name="email"
+                v-bind="field"
+                :class="[errors.length ? 'border !border-red-500 hover:border-red-500' : '']"
+                class="mb-1.5 w-full rounded-lg border px-5 py-3 text-base font-normal text-gray-600 transition-all hover:border-gray-400 focus:border-gray-400 max-sm:px-4 max-md:py-2 max-sm:text-sm px-6 py-4 max-md:py-3 max-sm:py-2" placeholder="email@example.com" aria-label="Email" aria-required="true"
+            >
+        </v-field>
+        
+                        <v-error-message
+    
+    name="email"
+    v-slot="{ message }"
+>
+    <p
+        class="text-red-500 text-xs italic"
+        v-text="message"
+    >
+    </p>
+</v-error-message>
+</div>
+
+                    <!-- Password -->
+                    <div class="mb-4">
+    <label class="mb-2 block text-base max-sm:text-sm max-sm:mb-1 required">
+    Kata Sandi
+</label>
+
+                        <v-field
+            v-slot="{ field, errors }"
+            rules="required|min:6" value="" label="Kata Sandi"
+            name="password"
+        >
+            <input
+                type="password"
+                name="password"
+                v-bind="field"
+                :class="[errors.length ? 'border !border-red-500 hover:border-red-500' : '']"
+                class="mb-1.5 w-full rounded-lg border px-5 py-3 text-base font-normal text-gray-600 transition-all hover:border-gray-400 focus:border-gray-400 max-sm:px-4 max-md:py-2 max-sm:text-sm px-6 py-4 max-md:py-3 max-sm:py-2" id="password" placeholder="Kata Sandi" aria-label="Kata Sandi" aria-required="true"
+            >
+        </v-field>
+        
+                        <v-error-message
+    
+    name="password"
+    v-slot="{ message }"
+>
+    <p
+        class="text-red-500 text-xs italic"
+        v-text="message"
+    >
+    </p>
+</v-error-message>
+</div>
+
+                    <div class="flex justify-between">
+                        <div class="flex select-none items-center gap-1.5">
+                            <input
+                                type="checkbox"
+                                id="show-password"
+                                class="peer hidden"
+                                onchange="switchVisibility()"
+                            />
+
+                            <label
+                                class="icon-uncheck peer-checked:icon-check-box cursor-pointer text-2xl text-navyBlue peer-checked:text-navyBlue max-sm:text-xl"
+                                for="show-password"
+                            ></label>
+
+                            <label
+                                class="cursor-pointer select-none text-base text-zinc-500 max-sm:text-sm ltr:pl-0 rtl:pr-0"
+                                for="show-password"
+                            >
+                                Tampilkan Kata Sandi                            </label>
+                        </div>
+
+                        <div class="block">
+                            <a
+                                href="http://127.0.0.1:8000/customer/forgot-password"
+                                class="cursor-pointer text-base text-black max-sm:text-sm"
+                            >
+                                <span>
+                                    Lupa Kata Sandi?                                </span>
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- Captcha -->
+                    
+                    <!-- Submit Button -->
+                    <div class="mt-8 flex flex-wrap items-center gap-9 max-sm:justify-center max-sm:gap-5 max-sm:text-center">
+                        <button
+                            class="primary-button m-0 mx-auto block w-full max-w-[374px] rounded-2xl px-11 py-4 text-center text-base max-md:max-w-full max-md:rounded-lg max-md:py-3 max-sm:py-1.5 ltr:ml-0 rtl:mr-0"
+                            type="submit"
+                        >
+                            Masuk                        </button>
+
+                        <div class="flex gap-3">
+            
+        
+        <a
+            href="http://127.0.0.1:8000/customer/social-login/facebook"
+            class="transition-all hover:opacity-[0.8]"
+            aria-label="enable"
+        >
+            <svg width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <rect width="40" height="40" rx="20" fill="#1877F2"/>
+    <path d="M21.4986 29V20.4181H24.4381L24.8821 17.0017H21.4986V14.8337C21.4653 14.3953 21.5875 13.9591 21.8439 13.6008C22.0271 13.4412 22.2423 13.3221 22.4752 13.2512C22.7081 13.1803 22.9535 13.1592 23.1952 13.1895L25 13.1751V10.1366C24.1276 10.0349 23.2493 9.99091 22.371 10.0051C21.7836 9.9769 21.1966 10.0663 20.6447 10.2681C20.0928 10.4698 19.5874 10.7797 19.1583 11.1793C18.7403 11.6214 18.4178 12.1439 18.2108 12.7146C18.0039 13.2854 17.9169 13.8922 17.9551 14.4977V17.0017H15V20.4073H17.9539V28.9892L21.4986 29Z" fill="white"/>
+</svg>
+            </a>
+            
+        
+        <a
+            href="http://127.0.0.1:8000/customer/social-login/twitter"
+            class="transition-all hover:opacity-[0.8]"
+            aria-label="enable"
+        >
+            <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 40 40" fill="none">
+    <rect width="40" height="40" rx="20" fill="#1A1A1A"/>
+    <path d="M10.0479 11L17.7698 20.9281L10 29H11.7482L18.5524 21.9329L24.0488 29H30L21.8431 18.5142L29.0766 11H27.3274L21.0625 17.5084L16 11H10.0479ZM12.62 12.239H15.3546L27.4279 27.761H24.6933L12.62 12.239Z" fill="white" stroke="white" stroke-miterlimit="10"/>
+</svg>        </a>
+            
+        
+        <a
+            href="http://127.0.0.1:8000/customer/social-login/google"
+            class="transition-all hover:opacity-[0.8]"
+            aria-label="enable"
+        >
+            <svg width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <rect width="40" height="40" rx="20" fill="white"/>
+    <path fill-rule="evenodd" clip-rule="evenodd" d="M7.46684 26.2042L12.285 22.6035C12.0095 21.7857 11.8605 20.9108 11.8605 20.0008C11.8605 19.091 12.0094 18.2163 12.2848 17.3986L7.46661 13.7979C6.52699 15.6649 6 17.7698 6 20.0008C6 22.232 6.52707 24.3371 7.46684 26.2042Z" fill="#FBBC05"/>
+    <path fill-rule="evenodd" clip-rule="evenodd" d="M12.285 17.3977C13.3966 14.0978 16.5684 11.7272 20.3258 11.7272C22.3444 11.7272 24.1677 12.4272 25.6002 13.5727L29.7677 9.49998C27.2281 7.33636 23.9723 6 20.3258 6C14.6645 6 9.7969 9.16706 7.4668 13.797L12.285 17.3977Z" fill="#EA4335"/>
+    <path fill-rule="evenodd" clip-rule="evenodd" d="M7.46484 26.1996C9.79417 30.8316 14.6629 34.0005 20.3258 34.0005C27.4886 34.0005 34.0002 28.9096 34.0002 20.0005C34.0002 19.1733 33.87 18.2823 33.6747 17.4551H20.3258V22.8641H28.0095C27.2933 26.3005 24.2979 28.2732 20.3258 28.2732C16.564 28.2732 13.3891 25.897 12.2811 22.591L7.46484 26.1996Z" fill="#34A853"/>
+    <path fill-rule="evenodd" clip-rule="evenodd" d="M20.3252 17.4551H33.674C33.8694 18.2823 33.9996 19.1733 33.9996 20.0005C33.9996 24.5636 32.2914 28.1251 29.6624 30.5139L25.0882 27.0531C26.5839 26.1307 27.6246 24.7081 28.0089 22.8641H20.3252V17.4551Z" fill="#4285F4"/>
+</svg>
+            </a>
+                                
+        
+        <a
+            href="http://127.0.0.1:8000/customer/social-login/github"
+            class="transition-all hover:opacity-[0.8]"
+            aria-label="enable"
+        >
+            <svg width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <rect width="40" height="40" rx="20" fill="black"/>
+    <path d="M20 6C12.2697 6 6 12.1968 6 19.8424C6 25.9584 10.011 31.147 15.576 32.9765C16.276 33.1057 16.5 32.6766 16.5 32.3098V29.7328C12.6057 30.5702 11.7937 28.1017 11.7937 28.1017C11.159 26.5029 10.2397 26.0761 10.2397 26.0761C8.97033 25.2155 10.3353 25.234 10.3353 25.234C11.7423 25.3309 12.482 26.6621 12.482 26.6621C13.7303 28.7777 15.7557 28.1663 16.556 27.8133C16.682 26.9182 17.0437 26.3091 17.445 25.963C14.3347 25.6124 11.068 24.4242 11.068 19.1226C11.068 17.6115 11.614 16.3772 12.51 15.4082C12.3653 15.0552 11.8847 13.6456 12.6453 11.74C12.6453 11.74 13.8213 11.3685 16.4953 13.1588C17.613 12.852 18.81 12.6997 20 12.6928C21.19 12.6974 22.387 12.852 23.507 13.1588C26.181 11.3685 27.3523 11.74 27.3523 11.74C28.1153 13.6456 27.6347 15.0552 27.4923 15.4036C28.3907 16.3726 28.932 17.6068 28.932 19.118C28.932 24.4358 25.656 25.6054 22.5387 25.9469C23.0427 26.376 23.5 27.2181 23.5 28.51V32.3075C23.5 32.6766 23.724 33.108 24.4333 32.9719C29.9937 31.1424 34 25.9561 34 19.8424C34 12.1968 27.7303 6 20 6Z" fill="white"/>
+</svg>
+            </a>
+    </div>
+                    </div>
+    </v-form>
+            </div>
+
+            
+
+            
+            <p class="mt-5 font-medium text-zinc-500 max-sm:text-center max-sm:text-sm">
+                Pelanggan baru?
+                <a
+                    class="text-navyBlue"
+                    href="http://127.0.0.1:8000/customer/register"
+                >
+                    Buat akun Anda                </a>
+            </p>
+        </div>
+
+        <p class="mb-4 mt-8 text-center text-xs text-zinc-500">
+            © Hak Cipta 2010 - 2026, Webkul Software (Terdaftar di India). Seluruh hak cipta dilindungi undang-undang.        </p>
+    </div>
+            </main>
+
+            
+
+
+            <!-- Page Services Blade Component -->
+            
+            <!-- Page Footer Blade Component -->
+                    </div>
+
+        <style>
+    body {
+        position: relative;
+    }
+
+    [data-blade-path] {
+        outline: 1px solid rgba(255, 0, 0, 0.6);
+    }
+
+    [data-blade-path]:hover {
+        outline: 2px solid rgba(255, 0, 0, 1);
+    }
+
+    .blade-path-label {
+        position: fixed !important;
+        bottom: 10px !important;
+        left: 10px !important;
+        background: rgba(0, 0, 0, 0.95) !important;
+        color: #fff !important;
+        padding: 8px 12px !important;
+        font-size: 11px !important;
+        font-family: monospace !important;
+        z-index: 9999999 !important;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.5) !important;
+        border-radius: 4px !important;
+        line-height: 1.4 !important;
+        max-width: 90vw !important;
+        word-break: break-all !important;
+        display: none !important;
+        align-items: center !important;
+        gap: 8px !important;
+        pointer-events: none !important;
+        margin: 0 !important;
+        transform: none !important;
+        top: auto !important;
+        right: auto !important;
+    }
+
+    .blade-path-label .path-text {
+        flex: 1 !important;
+        pointer-events: none !important;
+    }
+
+    .blade-path-label .copy-icon {
+        cursor: pointer !important;
+        padding: 4px 8px !important;
+        background: rgba(255, 255, 255, 0.1) !important;
+        border-radius: 3px !important;
+        flex-shrink: 0 !important;
+        font-size: 12px !important;
+        transition: all 0.2s !important;
+        pointer-events: auto !important;
+        user-select: none !important;
+    }
+
+    .blade-path-label .copy-icon:hover {
+        background: rgba(255, 255, 255, 0.3) !important;
+    }
+
+    .blade-path-label .copy-icon.copied {
+        background: #4caf50 !important;
+    }
+
+    .blade-path-label.active {
+        display: flex !important;
+        pointer-events: auto !important;
+    }
+
+    .main-container-wrapper .product-card .product-image img {
+        max-width: 100%;
+        height: 260px;
+        object-fit: cover;
+    }
+</style>
+
+<script>
+    (function() {
+        if (!document.body) return;
+        
+        /**
+         * Store processed elements to avoid duplicates.
+         */
+        const processedElements = new WeakSet();
+
+        /**
+         * Copy text to clipboard.
+         */
+        function copyToClipboard(text) {
+            if (navigator.clipboard && navigator.clipboard.writeText) {
+                return navigator.clipboard.writeText(text);
+            }
+            
+            const textarea = document.createElement('textarea');
+            textarea.value = text;
+            textarea.style.position = 'fixed';
+            textarea.style.opacity = '0';
+            document.body.appendChild(textarea);
+            textarea.select();
+            
+            try {
+                document.execCommand('copy');
+                document.body.removeChild(textarea);
+
+                return Promise.resolve();
+            } catch (err) {
+                document.body.removeChild(textarea);
+
+                return Promise.reject(err);
+            }
+        }
+        
+        /**
+         * Use event delegation for copy functionality.
+         */
+        document.addEventListener('click', function(e) {
+            if (e.target.classList.contains('copy-icon')) {
+                e.preventDefault();
+                e.stopPropagation();
+                
+                const path = e.target.getAttribute('data-path');
+                
+                copyToClipboard(path).then(() => {
+                    e.target.textContent = '✓ Copied!';
+                    e.target.classList.add('copied');
+                    e.target.style.minWidth = '60px';
+                    e.target.style.textAlign = 'center';
+                    
+                    setTimeout(() => {
+                        e.target.textContent = '📋';
+                        e.target.classList.remove('copied');
+                        e.target.style.minWidth = '';
+                        e.target.style.textAlign = '';
+                    }, 2000);
+                }).catch(err => {
+                    e.target.textContent = '✗ Failed';
+
+                    setTimeout(() => {
+                        e.target.textContent = '📋';
+                    }, 2000);
+                });
+            }
+        }, true);
+
+        /**
+         * Store labels separately in a WeakMap for elements that can't have children.
+         */
+        const labels = new WeakMap();
+
+        /**
+         * Create label element.
+         */
+        function createLabel(path) {
+            const label = document.createElement('div');
+            label.className = 'blade-path-label';
+            
+            const pathText = document.createElement('span');
+            pathText.className = 'path-text';
+            pathText.textContent = path;
+            
+            const copyIcon = document.createElement('span');
+            copyIcon.className = 'copy-icon';
+            copyIcon.textContent = '📋';
+            copyIcon.title = 'Copy path';
+            copyIcon.setAttribute('data-path', path);
+            
+            label.appendChild(pathText);
+            label.appendChild(copyIcon);
+            
+            return label;
+        }
+
+        /**
+         * Check if element can have children.
+         */
+        function canHaveChildren(element) {
+            const voidElements = ['IMG', 'INPUT', 'BR', 'HR', 'META', 'LINK', 'AREA', 'BASE', 'COL', 'EMBED', 'PARAM', 'SOURCE', 'TRACK', 'WBR'];
+
+            return !voidElements.includes(element.tagName);
+        }
+
+        /**
+         * Add label to element if it has data-blade-path attribute.
+         */
+        function addLabelToElement(element) {
+            if (processedElements.has(element) || !element.hasAttribute('data-blade-path')) {
+                return;
+            }
+            
+            const path = element.getAttribute('data-blade-path');
+
+            if (!path) return;
+            
+            processedElements.add(element);
+            
+            if (element.querySelector('.blade-path-label') || labels.has(element)) {
+                return;
+            }
+
+            const label = createLabel(path);
+            
+            if (canHaveChildren(element)) {
+                try {
+                    element.appendChild(label);
+                    labels.set(element, label);
+                } catch (e) {
+                    document.body.appendChild(label);
+                    labels.set(element, label);
+                }
+            } else {
+                document.body.appendChild(label);
+                labels.set(element, label);
+            }
+        }
+
+        /**
+         * Process all elements with data-blade-path attribute.
+         */
+        function processAllElements() {
+            const elements = document.querySelectorAll('[data-blade-path]');
+
+            elements.forEach(addLabelToElement);
+        }
+
+        /**
+         * Initial processing.
+         */
+        processAllElements();
+
+        /**
+         * Watch for DOM changes with debounce.
+         */
+        let debounceTimer;
+
+        const observer = new MutationObserver(function(mutations) {
+            clearTimeout(debounceTimer);
+
+            debounceTimer = setTimeout(processAllElements, 100);
+        });
+
+        observer.observe(document.body, {
+            childList: true,
+            subtree: true,
+            attributes: true,
+            attributeFilter: ['data-blade-path']
+        });
+
+        /**
+         * Periodic check for Vue.js rendered content.
+         */
+        setInterval(processAllElements, 1000);
+
+        /**
+         * Run on various events.
+         */
+        if (document.readyState === 'loading') {
+            document.addEventListener('DOMContentLoaded', processAllElements);
+        }
+        
+        window.addEventListener('load', processAllElements);
+
+        /**
+         * Handle hover to show only the directly hovered element's label.
+         */
+        let currentActiveLabel = null;
+
+        document.addEventListener('mouseover', function(e) {
+            const target = e.target.closest('[data-blade-path]');
+            
+            if (target) {
+                if (currentActiveLabel) {
+                    currentActiveLabel.classList.remove('active');
+                }
+                
+                let label = target.querySelector(':scope > .blade-path-label');
+                
+                if (!label) {
+                    label = labels.get(target);
+                }
+                
+                if (label) {
+                    if (label.parentElement === document.body) {
+                        const rect = target.getBoundingClientRect();
+                        label.style.top = (rect.top + window.scrollY) + 'px';
+                        label.style.left = (rect.left + window.scrollX) + 'px';
+                    }
+                    
+                    label.classList.add('active');
+                    currentActiveLabel = label;
+                }
+                
+                e.stopPropagation();
+            }
+        }, true);
+
+        document.addEventListener('mouseout', function(e) {
+            const target = e.target.closest('[data-blade-path]');
+            
+            if (target) {
+                let label = target.querySelector(':scope > .blade-path-label');
+
+                if (!label) {
+                    label = labels.get(target);
+                }
+                
+                if (label && currentActiveLabel === label) {
+                    label.classList.remove('active');
+                    currentActiveLabel = null;
+                }
+            }
+        }, true);
+
+        /**
+         * Keyboard shortcut to copy path (Ctrl+Shift+C or Cmd+Shift+C).
+         */
+        let currentHoveredElement = null;
+
+        document.addEventListener('mouseover', function(e) {
+            const target = e.target.closest('[data-blade-path]');
+
+            if (target) {
+                currentHoveredElement = target;
+            }
+        }, true);
+
+        document.addEventListener('keydown', function(e) {
+            if ((e.ctrlKey || e.metaKey) && e.shiftKey && e.key === 'C') {
+                e.preventDefault();
+                
+                if (currentHoveredElement) {
+                    const path = currentHoveredElement.getAttribute('data-blade-path');
+                    
+                    if (path) {
+                        copyToClipboard(path).then(() => {
+                            showCopyNotification('✓ Path Copied!');
+                        }).catch(err => {
+                            showCopyNotification('✗ Copy Failed');
+                        });
+                    }
+                }
+            }
+        });
+
+        /**
+         * Show copy notification.
+         */
+        function showCopyNotification(message) {
+            const existing = document.querySelector('.blade-copy-notification');
+
+            if (existing) {
+                existing.remove();
+            }
+
+            const notification = document.createElement('div');
+            notification.className = 'blade-copy-notification';
+            notification.textContent = message;
+            notification.style.cssText = `
+                position: fixed;
+                top: 20px;
+                right: 20px;
+                background: #4caf50;
+                color: white;
+                padding: 12px 20px;
+                border-radius: 4px;
+                font-family: monospace;
+                font-size: 14px;
+                z-index: 99999999;
+                box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+                animation: slideIn 0.3s ease-out;
+            `;
+
+            document.body.appendChild(notification);
+
+            setTimeout(() => {
+                notification.style.opacity = '0';
+                notification.style.transition = 'opacity 0.3s';
+                setTimeout(() => notification.remove(), 300);
+            }, 2000);
+        }
+
+        const style = document.createElement('style');
+
+        style.textContent = `
+            @keyframes slideIn {
+                from {
+                    transform: translateX(100%);
+                    opacity: 0;
+                }
+                to {
+                    transform: translateX(0);
+                    opacity: 1;
+                }
+            }
+        `;
+
+        document.head.appendChild(style);
+    })();
+</script>
+
+        <!-- WebMCP Tool Registration For AI Agents -->
+        <form
+    action="http://127.0.0.1:8000/webmcp/product"
+    method="GET"
+    toolname="view_product"
+    tooldescription="Buka halaman detail produk berdasarkan nama produk."
+    toolautosubmit
+>
+    <input
+        type="text"
+        name="query"
+        aria-label="Nama produk atau kunci URL yang akan dibuka."
+        toolparamdescription="Nama produk atau kunci URL yang akan dibuka."
+    >
+
+    <button type="submit" class="hidden" aria-hidden="true"></button>
+</form>
+
+<form
+    action="http://127.0.0.1:8000/webmcp/wishlist/add"
+    method="GET"
+    toolname="add_to_wishlist"
+    tooldescription="Tambahkan produk ke daftar keinginan pelanggan berdasarkan nama."
+    toolautosubmit
+>
+    <input
+        type="text"
+        name="query"
+        aria-label="Nama produk atau kunci URL untuk ditambahkan ke daftar keinginan."
+        toolparamdescription="Nama produk atau kunci URL untuk ditambahkan ke daftar keinginan."
+    >
+
+    <button type="submit" class="hidden" aria-hidden="true"></button>
+</form>
+
+<form
+    action="http://127.0.0.1:8000/customer/account/wishlist"
+    method="GET"
+    toolname="view_wishlist"
+    tooldescription="Buka halaman daftar keinginan untuk meninjau produk tersimpan pelanggan."
+    toolautosubmit
+>
+    <button type="submit" class="hidden" aria-hidden="true"></button>
+</form>
+
+<form
+    action="http://127.0.0.1:8000/checkout/cart"
+    method="GET"
+    toolname="view_cart"
+    tooldescription="Buka halaman keranjang belanja agar pelanggan dapat meninjau produk yang telah ditambahkan."
+    toolautosubmit
+>
+    <button type="submit" class="hidden" aria-hidden="true"></button>
+</form>
+
+<form
+    action="http://127.0.0.1:8000/checkout/onepage"
+    method="GET"
+    toolname="proceed_to_checkout"
+    tooldescription="Buka halaman checkout untuk mulai memesan barang yang ada di keranjang."
+    toolautosubmit
+>
+    <button type="submit" class="hidden" aria-hidden="true"></button>
+</form>
+
+
+
+                
+
+        <script>
+            function switchVisibility() {
+                let passwordField = document.getElementById("password");
+
+                passwordField.type = passwordField.type === "password"
+                    ? "text"
+                    : "password";
+            }
+        </script>
+        <script
+        type="text/x-template"
+        id="v-flash-item-template"
+    >
+        <div
+            class="flex w-max max-w-[408px] justify-between gap-12 rounded-lg px-5 py-3 max-sm:max-w-80 max-sm:items-center max-sm:gap-2 max-sm:p-3"
+            :style="typeStyles[flash.type]['container']"
+        >
+            <p
+                class="flex items-center break-words text-sm"
+                :style="typeStyles[flash.type]['message']"
+            >
+                <span
+                    class="icon-toast-done text-2xl ltr:mr-2.5 rtl:ml-2.5"
+                    :class="iconClasses[flash.type]"
+                    :style="typeStyles[flash.type]['icon']"
+                ></span>
+
+                {{ flash.message }}
+            </p>
+
+			<span
+                class="icon-cancel max-h-4 max-w-4 cursor-pointer"
+                :style="typeStyles[flash.type]['icon']"
+                @click="remove"
+            ></span>
+        </div>
+    </script>
+
+    <script type="module">
+        app.component('v-flash-item', {
+            template: '#v-flash-item-template',
+
+            props: ['flash'],
+
+            data() {
+                return {
+                    iconClasses: {
+                        success: 'icon-toast-done',
+
+                        error: 'icon-toast-error',
+
+                        warning: 'icon-toast-exclamation-mark',
+
+                        info: 'icon-toast-info',
+                    },
+
+                    typeStyles: {
+                        success: {
+                            container: 'background: #D4EDDA',
+
+                            message: 'color: #155721',
+
+                            icon: 'color: #155721'
+                        },
+
+                        error: {
+                            container: 'background: #F8D7DA',
+
+                            message: 'color: #721C24',
+
+                            icon: 'color: #721C24'
+                        },
+
+                        warning: {
+                            container: 'background: #FFF3CD',
+
+                            message: 'color: #856404',
+
+                            icon: 'color: #856404'
+                        },
+
+                        info: {
+                            container: 'background: #E2E3E5',
+
+                            message: 'color: #383D41',
+
+                            icon: 'color: #383D41'
+                        },
+                    },
+                };
+            },
+
+            mounted() {
+                var self = this;
+
+                setTimeout(function() {
+                    self.remove()
+                }, 2000)
+            },
+
+            methods: {
+                remove() {
+                    this.$emit('onRemove', this.flash)
+                }
+            }
+        });
+    </script>
+    
+    <script
+        type="text/x-template"
+        id="v-flash-group-template"
+    >
+        <transition-group
+            tag='div'
+            name="flash-group"
+            enter-from-class="ltr:translate-x-full rtl:-translate-x-full"
+            enter-active-class="transform transition duration-200 ease-in-out"
+            enter-to-class="ltr:translate-x-0 rtl:-translate-x-0"
+            leave-from-class="ltr:translate-x-0 rtl:-translate-x-0"
+            leave-active-class="transform transition duration-200 ease-in-out"
+            leave-to-class="ltr:translate-x-full rtl:-translate-x-full"
+            class='fixed top-5 z-[1001] grid justify-items-end gap-2.5 max-sm:hidden ltr:right-5 rtl:left-5'
+        >
+            <v-flash-item
+    v-for='flash in flashes'
+    :key='flash.uid'
+    :flash="flash"
+    @onRemove="remove($event)"
+/>
+
+        </transition-group>
+
+        <transition-group
+            tag='div'
+            name="flash-group"
+            enter-from-class="ltr:translate-y-full rtl:-translate-y-full"
+            enter-active-class="transform transition duration-200 ease-in-out"
+            enter-to-class="ltr:translate-y-0 rtl:-translate-y-0"
+            leave-from-class="ltr:translate-y-0 rtl:-translate-y-0"
+            leave-active-class="transform transition duration-200 ease-in-out"
+            leave-to-class="ltr:translate-y-full rtl:-translate-y-full"
+            class='fixed bottom-10 left-1/2 z-[1001] grid -translate-x-1/2 -translate-y-1/2 transform justify-items-center gap-2.5 sm:hidden'
+        >
+            <v-flash-item
+    v-for='flash in flashes'
+    :key='flash.uid'
+    :flash="flash"
+    @onRemove="remove($event)"
+/>
+
+        </transition-group>
+    </script>
+
+    <script type="module">
+        app.component('v-flash-group', {
+            template: '#v-flash-group-template',
+
+            data() {
+                return {
+                    uid: 0,
+
+                    flashes: []
+                }
+            },
+
+            created() {
+                this.loadInitialFlashes();
+
+                this.registerGlobalEvents();
+            },
+
+            methods: {
+                loadInitialFlashes() {
+                                            let flashes = [];
+                    
+                    if (typeof(flashes) === 'string') {
+                        return;
+                    }
+                    
+                    flashes.forEach(flash => {
+                        flash.uid = this.uid++;
+
+                        this.flashes.push(flash);
+                    });
+                },
+
+                add(flash) {
+                    flash.uid = this.uid++;
+
+                    this.flashes.push(flash);
+                },
+
+                remove(flash) {
+                    let index = this.flashes.indexOf(flash);
+
+                    this.flashes.splice(index, 1);
+                },
+
+                registerGlobalEvents() {
+                    this.$emitter.on('add-flash', this.add);
+                },
+            }
+        });
+    </script>
+    <script
+        type="text/x-template"
+        id="v-modal-confirm-template"
+    >
+        <div>
+            <transition
+                tag="div"
+                name="modal-overlay"
+                enter-class="duration-300 ease-out"
+                enter-from-class="opacity-0"
+                enter-to-class="opacity-100"
+                leave-class="duration-200 ease-in"
+                leave-from-class="opacity-100"
+                leave-to-class="opacity-0"
+            >
+                <div
+                    class="fixed inset-0 z-20 bg-gray-500 bg-opacity-50 transition-opacity"
+                    v-show="isOpen"
+                ></div>
+            </transition>
+
+            <transition
+                tag="div"
+                name="modal-content"
+                enter-class="duration-300 ease-out"
+                enter-from-class="translate-y-4 opacity-0 md:translate-y-0 md:scale-95"
+                enter-to-class="translate-y-0 opacity-100 md:scale-100"
+                leave-class="duration-200 ease-in"
+                leave-from-class="translate-y-0 opacity-100 md:scale-100"
+                leave-to-class="translate-y-4 opacity-0 md:translate-y-0 md:scale-95"
+            >
+                <div
+                    class="fixed inset-0 z-20 transform overflow-y-auto transition" v-show="isOpen"
+                >
+                    <div class="flex min-h-full items-end justify-center p-4 text-center sm:items-center sm:p-0">
+                        <div class="absolute left-1/2 top-1/2 z-[999] w-full max-w-[475px] -translate-x-1/2 -translate-y-1/2 overflow-hidden rounded-xl bg-white p-5 max-md:w-[90%] max-sm:p-4">
+                            <div class="flex gap-2.5">
+                                <div>
+                                    <span class="flex rounded-full border border-gray-300 p-2.5">
+                                        <i class="icon-error text-3xl max-sm:text-xl"></i>
+                                    </span>
+                                </div>
+
+                                <div>
+                                    <div class="flex items-center justify-between gap-5 text-xl max-sm:text-lg">
+                                        {{ title }}
+                                    </div>
+
+                                    <div class="pb-5 pt-1.5 text-left text-sm text-gray-500">
+                                        {{ message }}
+                                    </div>
+
+                                    <div class="flex justify-end gap-2.5">
+                                        <button
+                                            type="button"
+                                            class="secondary-button max-md:py-3 max-sm:px-6 max-sm:py-2.5"
+                                            @click="disagree"
+                                        >
+                                            {{ options.btnDisagree }}
+                                        </button>
+
+                                        <button
+                                            type="button"
+                                            class="primary-button max-md:py-3 max-sm:px-6 max-sm:py-2.5"
+                                            @click="agree"
+                                        >
+                                            {{ options.btnAgree }} 
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </transition>
+        </div>
+    </script>
+
+    <script type="module">
+        app.component('v-modal-confirm', {
+            template: '#v-modal-confirm-template',
+
+            data() {
+                return {
+                    isOpen: false,
+
+                    title: '',
+
+                    message: '',
+
+                    options: {
+                        btnDisagree: '',
+                        btnAgree: '',
+                    },
+
+                    agreeCallback: null,
+
+                    disagreeCallback: null,
+                };
+            },
+
+            created() {
+                this.registerGlobalEvents();
+            },
+
+            methods: {
+                open({
+                    title = "Apakah Anda yakin?",
+                    message = "Apakah Anda yakin ingin melakukan tindakan ini?",
+                    options = {
+                        btnDisagree: "Tidak Setuju",
+                        btnAgree: "Setuju",
+                    },
+                    agree = () => {},
+                    disagree = () => {},
+                }) {
+                    this.isOpen = true;
+
+                    const scrollbarWidth = window.innerWidth - document.documentElement.clientWidth;
+
+                    document.body.style.overflow = 'hidden';
+
+                    document.body.style.paddingRight = `${scrollbarWidth}px`;
+
+                    this.title = title;
+
+                    this.message = message;
+
+                    this.options = options;
+
+                    this.agreeCallback = agree;
+
+                    this.disagreeCallback = disagree;
+                },
+
+                disagree() {
+                    this.isOpen = false;
+
+                    document.body.style.overflow = 'auto';
+
+                    document.body.style.paddingRight = '';
+
+                    this.disagreeCallback();
+                },
+
+                agree() {
+                    this.isOpen = false;
+
+                    document.body.style.overflow = 'auto';
+
+                    document.body.style.paddingRight = '';
+
+                    this.agreeCallback();
+                },
+
+                registerGlobalEvents() {
+                    this.$emitter.on('open-confirm-modal', this.open);
+                },
+            }
+        });
+    </script>
+
+        
+        <script>
+            /**
+             * Mount the application as soon as the DOM is ready instead of waiting
+             * for the `load` event. All `Vue` components are registered through
+             * deferred `type="module"` scripts, which always finish executing
+             * before `DOMContentLoaded` fires, so every component is available
+             * by the time `app.mount()` runs. Mounting on `DOMContentLoaded`
+             * avoids blocking the storefront behind every image/font download.
+             */
+            function mountApp() {
+                app.mount("#app");
+            }
+
+            if (document.readyState === "loading") {
+                document.addEventListener("DOMContentLoaded", mountApp);
+            } else {
+                mountApp();
+            }
+        </script>
+
+        
+
+        <script type="text/javascript">
+            
+        </script>
+    <script type="text/javascript">
+var phpdebugbar = new PhpDebugBar.DebugBar({"theme":"auto","hideEmptyTabs":true});
+phpdebugbar.addTab("request", new PhpDebugBar.DebugBar.Tab({"icon":"tags","order":-100,"title":"Request", "widget": new PhpDebugBar.Widgets.HtmlVariableListWidget()}));
+phpdebugbar.addTab("modules", new PhpDebugBar.DebugBar.Tab({"icon":"cubes","title":"Modules", "widget": new PhpDebugBar.Widgets.ModulesWidget()}));
+phpdebugbar.addTab("messages", new PhpDebugBar.DebugBar.Tab({"icon":"list-alt","title":"Messages", "widget": new PhpDebugBar.Widgets.MessagesWidget()}));
+phpdebugbar.addIndicator("time", new PhpDebugBar.DebugBar.Indicator({"icon":"clock-o","tooltip":"Request Duration","link":"timeline"}), "right");
+phpdebugbar.addTab("timeline", new PhpDebugBar.DebugBar.Tab({"icon":"tasks","title":"Timeline", "widget": new PhpDebugBar.Widgets.TimelineWidget()}));
+phpdebugbar.addIndicator("memory", new PhpDebugBar.DebugBar.Indicator({"icon":"cogs","tooltip":"Memory Usage"}), "right");
+phpdebugbar.addTab("exceptions", new PhpDebugBar.DebugBar.Tab({"icon":"bug","title":"Exceptions", "widget": new PhpDebugBar.Widgets.ExceptionsWidget()}));
+phpdebugbar.addIndicator("version", new PhpDebugBar.DebugBar.Indicator({"icon":"laravel phpdebugbar-fab"}), "right");
+phpdebugbar.addTab("views", new PhpDebugBar.DebugBar.Tab({"icon":"leaf","title":"Views", "widget": new PhpDebugBar.Widgets.TemplatesWidget()}));
+phpdebugbar.addTab("queries", new PhpDebugBar.DebugBar.Tab({"icon":"database","title":"Queries", "widget": new PhpDebugBar.Widgets.LaravelQueriesWidget()}));
+phpdebugbar.addTab("models", new PhpDebugBar.DebugBar.Tab({"icon":"cubes","title":"Models", "widget": new PhpDebugBar.Widgets.TableVariableListWidget()}));
+phpdebugbar.addTab("emails", new PhpDebugBar.DebugBar.Tab({"icon":"inbox","title":"Mails", "widget": new PhpDebugBar.Widgets.MailsWidget()}));
+phpdebugbar.addTab("gate", new PhpDebugBar.DebugBar.Tab({"icon":"list-alt","title":"Gate", "widget": new PhpDebugBar.Widgets.MessagesWidget()}));
+phpdebugbar.addIndicator("currentrequest", new PhpDebugBar.DebugBar.Indicator({"icon":"share","link":"request"}), "right");
+phpdebugbar.setDataMap({
+"request": ["request.data", {}],
+"modules": ["modules", []],
+"modules:badge": ["modules.count", 0],
+"messages": ["messages.messages", []],
+"messages:badge": ["messages.count", null],
+"time": ["time.duration_str", '0ms'],
+"timeline": ["time", {}],
+"memory": ["memory.peak_usage_str", '0B'],
+"exceptions": ["exceptions.exceptions", []],
+"exceptions:badge": ["exceptions.count", null],
+"version": ["laravel.version", ],
+"version:tooltip": ["laravel.tooltip", {}],
+"views": ["views", []],
+"views:badge": ["views.nb_templates", 0],
+"queries": ["queries", []],
+"queries:badge": ["queries.nb_statements", 0],
+"models": ["models", {}],
+"models:badge": ["models.count", 0],
+"emails": ["symfonymailer_mails.mails", []],
+"emails:badge": ["symfonymailer_mails.count", null],
+"gate": ["gate.messages", []],
+"gate:badge": ["gate.count", null],
+"request:badge": ["request.badge", null],
+"currentrequest": ["request.data.uri", ],
+"currentrequest:tooltip": ["request.tooltip", {}]
+});
+phpdebugbar.restoreState();
+phpdebugbar.enableAjaxHandlerTab();
+phpdebugbar.ajaxHandler = new PhpDebugBar.AjaxHandler(phpdebugbar, undefined, true);
+phpdebugbar.ajaxHandler.bindToFetch();
+phpdebugbar.ajaxHandler.bindToXHR();
+phpdebugbar.setOpenHandler(new PhpDebugBar.OpenHandler({"url":"http:\/\/127.0.0.1:8000\/_debugbar\/open"}));
+phpdebugbar.addDataSet({"__meta":{"id":"01KWC72T2F8ZJXNCD30HCNF8F8","datetime":"2026-06-30 19:11:53","utime":1782821513.296952,"method":"GET","uri":"\/customer\/login","ip":"127.0.0.1"},"modules":{"count":1,"modules":[{"name":"Webkul\\Core","models":["Webkul\\Core\\Models\\Channel (1)","Webkul\\Core\\Models\\Locale (2)","Webkul\\Core\\Models\\Currency (2)"],"views":[],"queries":[{"sql":"select * from `channels` where `hostname` in (\u0027127.0.0.1:8000\u0027, \u0027http:\/\/127.0.0.1:8000\u0027, \u0027https:\/\/127.0.0.1:8000\u0027)","duration":1.22,"duration_str":"1.22s","connection":"bagisto2"},{"sql":"select * from `channels` limit 1","duration":1.09,"duration_str":"1.09s","connection":"bagisto2"},{"sql":"select `locales`.*, `channel_locales`.`channel_id` as `pivot_channel_id`, `channel_locales`.`locale_id` as `pivot_locale_id` from `locales` inner join `channel_locales` on `locales`.`id` = `channel_locales`.`locale_id` where `channel_locales`.`channel_id` = 1","duration":1.13,"duration_str":"1.13s","connection":"bagisto2"},{"sql":"select * from `locales` where `locales`.`id` = 1 limit 1","duration":1.53,"duration_str":"1.53s","connection":"bagisto2"},{"sql":"select `currencies`.*, `channel_currencies`.`channel_id` as `pivot_channel_id`, `channel_currencies`.`currency_id` as `pivot_currency_id` from `currencies` inner join `channel_currencies` on `currencies`.`id` = `channel_currencies`.`currency_id` where `channel_currencies`.`channel_id` = 1","duration":2.1,"duration_str":"2.1s","connection":"bagisto2"},{"sql":"select * from `currencies` where `currencies`.`id` = 1 limit 1","duration":1.14,"duration_str":"1.14s","connection":"bagisto2"}]}]},"messages":{"count":43,"messages":[{"message":"[19:11:52] LOG.warning: Since symfony\/http-foundation 7.4: Request::get() is deprecated, use properties -\u003Eattributes, query or request directly instead. in C:\\xampp\\htdocs\\bagisto\\vendor\\symfony\\deprecation-contracts\\function.php on line 25","message_html":null,"is_string":false,"label":"warning","time":1782821512.749301,"xdebug_link":null,"collector":"log"},{"message":"[19:11:52] LOG.warning: Since symfony\/http-foundation 7.4: Request::get() is deprecated, use properties -\u003Eattributes, query or request directly instead. in C:\\xampp\\htdocs\\bagisto\\vendor\\symfony\\deprecation-contracts\\function.php on line 25","message_html":null,"is_string":false,"label":"warning","time":1782821512.769874,"xdebug_link":null,"collector":"log"},{"message":"[19:11:52] LOG.warning: Since symfony\/http-foundation 7.4: Request::get() is deprecated, use properties -\u003Eattributes, query or request directly instead. in C:\\xampp\\htdocs\\bagisto\\vendor\\symfony\\deprecation-contracts\\function.php on line 25","message_html":null,"is_string":false,"label":"warning","time":1782821512.850998,"xdebug_link":null,"collector":"log"},{"message":"[19:11:52] LOG.warning: Since symfony\/http-foundation 7.4: Request::get() is deprecated, use properties -\u003Eattributes, query or request directly instead. in C:\\xampp\\htdocs\\bagisto\\vendor\\symfony\\deprecation-contracts\\function.php on line 25","message_html":null,"is_string":false,"label":"warning","time":1782821512.851811,"xdebug_link":null,"collector":"log"},{"message":"[19:11:52] LOG.warning: Since symfony\/http-foundation 7.4: Request::get() is deprecated, use properties -\u003Eattributes, query or request directly instead. in C:\\xampp\\htdocs\\bagisto\\vendor\\symfony\\deprecation-contracts\\function.php on line 25","message_html":null,"is_string":false,"label":"warning","time":1782821512.858169,"xdebug_link":null,"collector":"log"},{"message":"[19:11:52] LOG.warning: Since symfony\/http-foundation 7.4: Request::get() is deprecated, use properties -\u003Eattributes, query or request directly instead. in C:\\xampp\\htdocs\\bagisto\\vendor\\symfony\\deprecation-contracts\\function.php on line 25","message_html":null,"is_string":false,"label":"warning","time":1782821512.858894,"xdebug_link":null,"collector":"log"},{"message":"[19:11:52] LOG.warning: Since symfony\/http-foundation 7.4: Request::get() is deprecated, use properties -\u003Eattributes, query or request directly instead. in C:\\xampp\\htdocs\\bagisto\\vendor\\symfony\\deprecation-contracts\\function.php on line 25","message_html":null,"is_string":false,"label":"warning","time":1782821512.881896,"xdebug_link":null,"collector":"log"},{"message":"[19:11:52] LOG.warning: Since symfony\/http-foundation 7.4: Request::get() is deprecated, use properties -\u003Eattributes, query or request directly instead. in C:\\xampp\\htdocs\\bagisto\\vendor\\symfony\\deprecation-contracts\\function.php on line 25","message_html":null,"is_string":false,"label":"warning","time":1782821512.882612,"xdebug_link":null,"collector":"log"},{"message":"[19:11:52] LOG.warning: Since symfony\/http-foundation 7.4: Request::get() is deprecated, use properties -\u003Eattributes, query or request directly instead. in C:\\xampp\\htdocs\\bagisto\\vendor\\symfony\\deprecation-contracts\\function.php on line 25","message_html":null,"is_string":false,"label":"warning","time":1782821512.90072,"xdebug_link":null,"collector":"log"},{"message":"[19:11:52] LOG.warning: Since symfony\/http-foundation 7.4: Request::get() is deprecated, use properties -\u003Eattributes, query or request directly instead. in C:\\xampp\\htdocs\\bagisto\\vendor\\symfony\\deprecation-contracts\\function.php on line 25","message_html":null,"is_string":false,"label":"warning","time":1782821512.901491,"xdebug_link":null,"collector":"log"},{"message":"[19:11:52] LOG.warning: Since symfony\/http-foundation 7.4: Request::get() is deprecated, use properties -\u003Eattributes, query or request directly instead. in C:\\xampp\\htdocs\\bagisto\\vendor\\symfony\\deprecation-contracts\\function.php on line 25","message_html":null,"is_string":false,"label":"warning","time":1782821512.920816,"xdebug_link":null,"collector":"log"},{"message":"[19:11:52] LOG.warning: Since symfony\/http-foundation 7.4: Request::get() is deprecated, use properties -\u003Eattributes, query or request directly instead. in C:\\xampp\\htdocs\\bagisto\\vendor\\symfony\\deprecation-contracts\\function.php on line 25","message_html":null,"is_string":false,"label":"warning","time":1782821512.921514,"xdebug_link":null,"collector":"log"},{"message":"[19:11:52] LOG.warning: Since symfony\/http-foundation 7.4: Request::get() is deprecated, use properties -\u003Eattributes, query or request directly instead. in C:\\xampp\\htdocs\\bagisto\\vendor\\symfony\\deprecation-contracts\\function.php on line 25","message_html":null,"is_string":false,"label":"warning","time":1782821512.942773,"xdebug_link":null,"collector":"log"},{"message":"[19:11:52] LOG.warning: Since symfony\/http-foundation 7.4: Request::get() is deprecated, use properties -\u003Eattributes, query or request directly instead. in C:\\xampp\\htdocs\\bagisto\\vendor\\symfony\\deprecation-contracts\\function.php on line 25","message_html":null,"is_string":false,"label":"warning","time":1782821512.943563,"xdebug_link":null,"collector":"log"},{"message":"[19:11:52] LOG.warning: Since symfony\/http-foundation 7.4: Request::get() is deprecated, use properties -\u003Eattributes, query or request directly instead. in C:\\xampp\\htdocs\\bagisto\\vendor\\symfony\\deprecation-contracts\\function.php on line 25","message_html":null,"is_string":false,"label":"warning","time":1782821512.975625,"xdebug_link":null,"collector":"log"},{"message":"[19:11:52] LOG.warning: Since symfony\/http-foundation 7.4: Request::get() is deprecated, use properties -\u003Eattributes, query or request directly instead. in C:\\xampp\\htdocs\\bagisto\\vendor\\symfony\\deprecation-contracts\\function.php on line 25","message_html":null,"is_string":false,"label":"warning","time":1782821512.97649,"xdebug_link":null,"collector":"log"},{"message":"[19:11:52] LOG.warning: Since symfony\/http-foundation 7.4: Request::get() is deprecated, use properties -\u003Eattributes, query or request directly instead. in C:\\xampp\\htdocs\\bagisto\\vendor\\symfony\\deprecation-contracts\\function.php on line 25","message_html":null,"is_string":false,"label":"warning","time":1782821512.987017,"xdebug_link":null,"collector":"log"},{"message":"[19:11:52] LOG.warning: Since symfony\/http-foundation 7.4: Request::get() is deprecated, use properties -\u003Eattributes, query or request directly instead. in C:\\xampp\\htdocs\\bagisto\\vendor\\symfony\\deprecation-contracts\\function.php on line 25","message_html":null,"is_string":false,"label":"warning","time":1782821512.987687,"xdebug_link":null,"collector":"log"},{"message":"[19:11:53] LOG.warning: Since symfony\/http-foundation 7.4: Request::get() is deprecated, use properties -\u003Eattributes, query or request directly instead. in C:\\xampp\\htdocs\\bagisto\\vendor\\symfony\\deprecation-contracts\\function.php on line 25","message_html":null,"is_string":false,"label":"warning","time":1782821513.008348,"xdebug_link":null,"collector":"log"},{"message":"[19:11:53] LOG.warning: Since symfony\/http-foundation 7.4: Request::get() is deprecated, use properties -\u003Eattributes, query or request directly instead. in C:\\xampp\\htdocs\\bagisto\\vendor\\symfony\\deprecation-contracts\\function.php on line 25","message_html":null,"is_string":false,"label":"warning","time":1782821513.009017,"xdebug_link":null,"collector":"log"},{"message":"[19:11:53] LOG.warning: Since symfony\/http-foundation 7.4: Request::get() is deprecated, use properties -\u003Eattributes, query or request directly instead. in C:\\xampp\\htdocs\\bagisto\\vendor\\symfony\\deprecation-contracts\\function.php on line 25","message_html":null,"is_string":false,"label":"warning","time":1782821513.029855,"xdebug_link":null,"collector":"log"},{"message":"[19:11:53] LOG.warning: Since symfony\/http-foundation 7.4: Request::get() is deprecated, use properties -\u003Eattributes, query or request directly instead. in C:\\xampp\\htdocs\\bagisto\\vendor\\symfony\\deprecation-contracts\\function.php on line 25","message_html":null,"is_string":false,"label":"warning","time":1782821513.030744,"xdebug_link":null,"collector":"log"},{"message":"[19:11:53] LOG.warning: Since symfony\/http-foundation 7.4: Request::get() is deprecated, use properties -\u003Eattributes, query or request directly instead. in C:\\xampp\\htdocs\\bagisto\\vendor\\symfony\\deprecation-contracts\\function.php on line 25","message_html":null,"is_string":false,"label":"warning","time":1782821513.053813,"xdebug_link":null,"collector":"log"},{"message":"[19:11:53] LOG.warning: Since symfony\/http-foundation 7.4: Request::get() is deprecated, use properties -\u003Eattributes, query or request directly instead. in C:\\xampp\\htdocs\\bagisto\\vendor\\symfony\\deprecation-contracts\\function.php on line 25","message_html":null,"is_string":false,"label":"warning","time":1782821513.054603,"xdebug_link":null,"collector":"log"},{"message":"[19:11:53] LOG.warning: Since symfony\/http-foundation 7.4: Request::get() is deprecated, use properties -\u003Eattributes, query or request directly instead. in C:\\xampp\\htdocs\\bagisto\\vendor\\symfony\\deprecation-contracts\\function.php on line 25","message_html":null,"is_string":false,"label":"warning","time":1782821513.105043,"xdebug_link":null,"collector":"log"},{"message":"[19:11:53] LOG.warning: Since symfony\/http-foundation 7.4: Request::get() is deprecated, use properties -\u003Eattributes, query or request directly instead. in C:\\xampp\\htdocs\\bagisto\\vendor\\symfony\\deprecation-contracts\\function.php on line 25","message_html":null,"is_string":false,"label":"warning","time":1782821513.105705,"xdebug_link":null,"collector":"log"},{"message":"[19:11:53] LOG.warning: Since symfony\/http-foundation 7.4: Request::get() is deprecated, use properties -\u003Eattributes, query or request directly instead. in C:\\xampp\\htdocs\\bagisto\\vendor\\symfony\\deprecation-contracts\\function.php on line 25","message_html":null,"is_string":false,"label":"warning","time":1782821513.116494,"xdebug_link":null,"collector":"log"},{"message":"[19:11:53] LOG.warning: Since symfony\/http-foundation 7.4: Request::get() is deprecated, use properties -\u003Eattributes, query or request directly instead. in C:\\xampp\\htdocs\\bagisto\\vendor\\symfony\\deprecation-contracts\\function.php on line 25","message_html":null,"is_string":false,"label":"warning","time":1782821513.117244,"xdebug_link":null,"collector":"log"},{"message":"[19:11:53] LOG.warning: Since symfony\/http-foundation 7.4: Request::get() is deprecated, use properties -\u003Eattributes, query or request directly instead. in C:\\xampp\\htdocs\\bagisto\\vendor\\symfony\\deprecation-contracts\\function.php on line 25","message_html":null,"is_string":false,"label":"warning","time":1782821513.138255,"xdebug_link":null,"collector":"log"},{"message":"[19:11:53] LOG.warning: Since symfony\/http-foundation 7.4: Request::get() is deprecated, use properties -\u003Eattributes, query or request directly instead. in C:\\xampp\\htdocs\\bagisto\\vendor\\symfony\\deprecation-contracts\\function.php on line 25","message_html":null,"is_string":false,"label":"warning","time":1782821513.139008,"xdebug_link":null,"collector":"log"},{"message":"[19:11:53] LOG.warning: Since symfony\/http-foundation 7.4: Request::get() is deprecated, use properties -\u003Eattributes, query or request directly instead. in C:\\xampp\\htdocs\\bagisto\\vendor\\symfony\\deprecation-contracts\\function.php on line 25","message_html":null,"is_string":false,"label":"warning","time":1782821513.160419,"xdebug_link":null,"collector":"log"},{"message":"[19:11:53] LOG.warning: Since symfony\/http-foundation 7.4: Request::get() is deprecated, use properties -\u003Eattributes, query or request directly instead. in C:\\xampp\\htdocs\\bagisto\\vendor\\symfony\\deprecation-contracts\\function.php on line 25","message_html":null,"is_string":false,"label":"warning","time":1782821513.161399,"xdebug_link":null,"collector":"log"},{"message":"[19:11:53] LOG.warning: Since symfony\/http-foundation 7.4: Request::get() is deprecated, use properties -\u003Eattributes, query or request directly instead. in C:\\xampp\\htdocs\\bagisto\\vendor\\symfony\\deprecation-contracts\\function.php on line 25","message_html":null,"is_string":false,"label":"warning","time":1782821513.184668,"xdebug_link":null,"collector":"log"},{"message":"[19:11:53] LOG.warning: Since symfony\/http-foundation 7.4: Request::get() is deprecated, use properties -\u003Eattributes, query or request directly instead. in C:\\xampp\\htdocs\\bagisto\\vendor\\symfony\\deprecation-contracts\\function.php on line 25","message_html":null,"is_string":false,"label":"warning","time":1782821513.186213,"xdebug_link":null,"collector":"log"},{"message":"[19:11:53] LOG.warning: Since symfony\/http-foundation 7.4: Request::get() is deprecated, use properties -\u003Eattributes, query or request directly instead. in C:\\xampp\\htdocs\\bagisto\\vendor\\symfony\\deprecation-contracts\\function.php on line 25","message_html":null,"is_string":false,"label":"warning","time":1782821513.209628,"xdebug_link":null,"collector":"log"},{"message":"[19:11:53] LOG.warning: Since symfony\/http-foundation 7.4: Request::get() is deprecated, use properties -\u003Eattributes, query or request directly instead. in C:\\xampp\\htdocs\\bagisto\\vendor\\symfony\\deprecation-contracts\\function.php on line 25","message_html":null,"is_string":false,"label":"warning","time":1782821513.210246,"xdebug_link":null,"collector":"log"},{"message":"[19:11:53] LOG.warning: explode(): Passing null to parameter #2 ($string) of type string is deprecated in C:\\xampp\\htdocs\\bagisto\\packages\\Webkul\\Core\\src\\Core.php on line 955","message_html":null,"is_string":false,"label":"warning","time":1782821513.230212,"xdebug_link":null,"collector":"log"},{"message":"[19:11:53] LOG.warning: Since symfony\/http-foundation 7.4: Request::get() is deprecated, use properties -\u003Eattributes, query or request directly instead. in C:\\xampp\\htdocs\\bagisto\\vendor\\symfony\\deprecation-contracts\\function.php on line 25","message_html":null,"is_string":false,"label":"warning","time":1782821513.230617,"xdebug_link":null,"collector":"log"},{"message":"[19:11:53] LOG.warning: Since symfony\/http-foundation 7.4: Request::get() is deprecated, use properties -\u003Eattributes, query or request directly instead. in C:\\xampp\\htdocs\\bagisto\\vendor\\symfony\\deprecation-contracts\\function.php on line 25","message_html":null,"is_string":false,"label":"warning","time":1782821513.231174,"xdebug_link":null,"collector":"log"},{"message":"[19:11:53] LOG.warning: Since symfony\/http-foundation 7.4: Request::get() is deprecated, use properties -\u003Eattributes, query or request directly instead. in C:\\xampp\\htdocs\\bagisto\\vendor\\symfony\\deprecation-contracts\\function.php on line 25","message_html":null,"is_string":false,"label":"warning","time":1782821513.259091,"xdebug_link":null,"collector":"log"},{"message":"[19:11:53] LOG.warning: Since symfony\/http-foundation 7.4: Request::get() is deprecated, use properties -\u003Eattributes, query or request directly instead. in C:\\xampp\\htdocs\\bagisto\\vendor\\symfony\\deprecation-contracts\\function.php on line 25","message_html":null,"is_string":false,"label":"warning","time":1782821513.260018,"xdebug_link":null,"collector":"log"},{"message":"[19:11:53] LOG.warning: Since symfony\/http-foundation 7.4: Request::get() is deprecated, use properties -\u003Eattributes, query or request directly instead. in C:\\xampp\\htdocs\\bagisto\\vendor\\symfony\\deprecation-contracts\\function.php on line 25","message_html":null,"is_string":false,"label":"warning","time":1782821513.277946,"xdebug_link":null,"collector":"log"},{"message":"[19:11:53] LOG.warning: Since symfony\/http-foundation 7.4: Request::get() is deprecated, use properties -\u003Eattributes, query or request directly instead. in C:\\xampp\\htdocs\\bagisto\\vendor\\symfony\\deprecation-contracts\\function.php on line 25","message_html":null,"is_string":false,"label":"warning","time":1782821513.278505,"xdebug_link":null,"collector":"log"}]},"time":{"count":27,"start":1782821511.414129,"end":1782821513.357571,"duration":1.9434418678283691,"duration_str":"1.94s","measures":[{"label":"Booting","start":1782821511.414129,"relative_start":0,"end":1782821512.548378,"relative_end":1782821512.548378,"duration":1.134248971939087,"duration_str":"1.13s","memory":0,"memory_str":"0B","params":[],"collector":"time","group":null},{"label":"Application","start":1782821512.548403,"relative_start":1.1342740058898926,"end":1782821513.357576,"relative_end":5.0067901611328125e-6,"duration":0.8091728687286377,"duration_str":"809ms","memory":0,"memory_str":"0B","params":[],"collector":"time","group":null},{"label":"Routing","start":1782821512.59096,"relative_start":1.1768310070037842,"end":1782821512.603681,"relative_end":1782821512.603681,"duration":0.012721061706542969,"duration_str":"12.72ms","memory":0,"memory_str":"0B","params":[],"collector":null,"group":null},{"label":"Preparing Response","start":1782821512.802812,"relative_start":1.3886830806732178,"end":1782821513.289939,"relative_end":1782821513.289939,"duration":0.48712682723999023,"duration_str":"487ms","memory":0,"memory_str":"0B","params":[],"collector":null,"group":null},{"label":"View: shop::customers.sign-in","start":1782821512.809676,"relative_start":1.3955469131469727,"end":1782821512.809676,"relative_end":1782821512.809676,"duration":0,"duration_str":"0\u03bcs","memory":0,"memory_str":"0B","params":[],"collector":"views","group":"View"},{"label":"View: shop::components.form.control-group.label","start":1782821512.832437,"relative_start":1.4183080196380615,"end":1782821512.832437,"relative_end":1782821512.832437,"duration":0,"duration_str":"0\u03bcs","memory":0,"memory_str":"0B","params":[],"collector":"views","group":"View"},{"label":"View: shop::components.form.control-group.control","start":1782821512.834454,"relative_start":1.4203250408172607,"end":1782821512.834454,"relative_end":1782821512.834454,"duration":0,"duration_str":"0\u03bcs","memory":0,"memory_str":"0B","params":[],"collector":"views","group":"View"},{"label":"View: shop::components.form.control-group.error","start":1782821512.837685,"relative_start":1.4235560894012451,"end":1782821512.837685,"relative_end":1782821512.837685,"duration":0,"duration_str":"0\u03bcs","memory":0,"memory_str":"0B","params":[],"collector":"views","group":"View"},{"label":"View: shop::components.form.control-group.index","start":1782821512.839194,"relative_start":1.425065040588379,"end":1782821512.839194,"relative_end":1782821512.839194,"duration":0,"duration_str":"0\u03bcs","memory":0,"memory_str":"0B","params":[],"collector":"views","group":"View"},{"label":"View: shop::components.form.control-group.label","start":1782821512.840738,"relative_start":1.4266090393066406,"end":1782821512.840738,"relative_end":1782821512.840738,"duration":0,"duration_str":"0\u03bcs","memory":0,"memory_str":"0B","params":[],"collector":"views","group":"View"},{"label":"View: shop::components.form.control-group.control","start":1782821512.842014,"relative_start":1.4278850555419922,"end":1782821512.842014,"relative_end":1782821512.842014,"duration":0,"duration_str":"0\u03bcs","memory":0,"memory_str":"0B","params":[],"collector":"views","group":"View"},{"label":"View: shop::components.form.control-group.error","start":1782821512.844973,"relative_start":1.4308440685272217,"end":1782821512.844973,"relative_end":1782821512.844973,"duration":0,"duration_str":"0\u03bcs","memory":0,"memory_str":"0B","params":[],"collector":"views","group":"View"},{"label":"View: shop::components.form.control-group.index","start":1782821512.846681,"relative_start":1.4325520992279053,"end":1782821512.846681,"relative_end":1782821512.846681,"duration":0,"duration_str":"0\u03bcs","memory":0,"memory_str":"0B","params":[],"collector":"views","group":"View"},{"label":"View: social_login::shop.customers.session.social-links","start":1782821512.856561,"relative_start":1.442431926727295,"end":1782821512.856561,"relative_end":1782821512.856561,"duration":0,"duration_str":"0\u03bcs","memory":0,"memory_str":"0B","params":[],"collector":"views","group":"View"},{"label":"View: social_login::icons.facebook","start":1782821512.880721,"relative_start":1.4665920734405518,"end":1782821512.880721,"relative_end":1782821512.880721,"duration":0,"duration_str":"0\u03bcs","memory":0,"memory_str":"0B","params":[],"collector":"views","group":"View"},{"label":"View: social_login::icons.twitter","start":1782821512.899597,"relative_start":1.4854679107666016,"end":1782821512.899597,"relative_end":1782821512.899597,"duration":0,"duration_str":"0\u03bcs","memory":0,"memory_str":"0B","params":[],"collector":"views","group":"View"},{"label":"View: social_login::icons.google","start":1782821512.91965,"relative_start":1.5055210590362549,"end":1782821512.91965,"relative_end":1782821512.91965,"duration":0,"duration_str":"0\u03bcs","memory":0,"memory_str":"0B","params":[],"collector":"views","group":"View"},{"label":"View: social_login::icons.github","start":1782821512.969119,"relative_start":1.5549900531768799,"end":1782821512.969119,"relative_end":1782821512.969119,"duration":0,"duration_str":"0\u03bcs","memory":0,"memory_str":"0B","params":[],"collector":"views","group":"View"},{"label":"View: shop::components.form.index","start":1782821512.971556,"relative_start":1.557426929473877,"end":1782821512.971556,"relative_end":1782821512.971556,"duration":0,"duration_str":"0\u03bcs","memory":0,"memory_str":"0B","params":[],"collector":"views","group":"View"},{"label":"View: shop::components.layouts.index","start":1782821513.076561,"relative_start":1.6624319553375244,"end":1782821513.076561,"relative_end":1782821513.076561,"duration":0,"duration_str":"0\u03bcs","memory":0,"memory_str":"0B","params":[],"collector":"views","group":"View"},{"label":"View: shop::components.flash-group.index","start":1782821513.252001,"relative_start":1.83787202835083,"end":1782821513.252001,"relative_end":1782821513.252001,"duration":0,"duration_str":"0\u03bcs","memory":0,"memory_str":"0B","params":[],"collector":"views","group":"View"},{"label":"View: shop::components.flash-group.item","start":1782821513.25483,"relative_start":1.8407008647918701,"end":1782821513.25483,"relative_end":1782821513.25483,"duration":0,"duration_str":"0\u03bcs","memory":0,"memory_str":"0B","params":[],"collector":"views","group":"View"},{"label":"View: shop::components.flash-group.item","start":1782821513.256352,"relative_start":1.8422229290008545,"end":1782821513.256352,"relative_end":1782821513.256352,"duration":0,"duration_str":"0\u03bcs","memory":0,"memory_str":"0B","params":[],"collector":"views","group":"View"},{"label":"View: shop::components.modal.confirm","start":1782821513.258013,"relative_start":1.843883991241455,"end":1782821513.258013,"relative_end":1782821513.258013,"duration":0,"duration_str":"0\u03bcs","memory":0,"memory_str":"0B","params":[],"collector":"views","group":"View"},{"label":"View: core::blade.tracer.style","start":1782821513.271368,"relative_start":1.857239007949829,"end":1782821513.271368,"relative_end":1782821513.271368,"duration":0,"duration_str":"0\u03bcs","memory":0,"memory_str":"0B","params":[],"collector":"views","group":"View"},{"label":"View: paypal::checkout.onepage.paypal-smart-button","start":1782821513.27328,"relative_start":1.8591508865356445,"end":1782821513.27328,"relative_end":1782821513.27328,"duration":0,"duration_str":"0\u03bcs","memory":0,"memory_str":"0B","params":[],"collector":"views","group":"View"},{"label":"View: shop::components.layouts.webmcp","start":1782821513.276343,"relative_start":1.8622140884399414,"end":1782821513.276343,"relative_end":1782821513.276343,"duration":0,"duration_str":"0\u03bcs","memory":0,"memory_str":"0B","params":[],"collector":"views","group":"View"}]},"memory":{"peak_usage":47455304,"peak_usage_str":"45MB"},"exceptions":{"count":0,"exceptions":[]},"laravel":{"version":"12.x","tooltip":{"Laravel Version":"12.61.1","PHP Version":"8.3.31","Environment":"local","Debug Mode":"Enabled","URL":"127.0.0.1:8000","Timezone":"Asia\/Jakarta","Locale":"id"}},"views":{"count":23,"nb_templates":23,"templates":[{"name":"shop::customers.sign-in","param_count":null,"params":[],"start":1782821512.809516,"type":"blade","hash":"bladeC:\\xampp\\htdocs\\bagisto\\packages\\Webkul\\Shop\\src\/resources\/views\/customers\/sign-in.blade.phpshop::customers.sign-in","xdebug_link":{"url":"phpstorm:\/\/open?file=C%3A%2Fxampp%2Fhtdocs%2Fbagisto%2Fpackages%2FWebkul%2FShop%2Fsrc%2FResources%2Fviews%2Fcustomers%2Fsign-in.blade.php\u0026line=1","ajax":false,"filename":"sign-in.blade.php","line":"?"}},{"name":"shop::components.form.control-group.label","param_count":null,"params":[],"start":1782821512.832252,"type":"blade","hash":"bladeC:\\xampp\\htdocs\\bagisto\\packages\\Webkul\\Shop\\src\/resources\/views\/components\/form\/control-group\/label.blade.phpshop::components.form.control-group.label","xdebug_link":{"url":"phpstorm:\/\/open?file=C%3A%2Fxampp%2Fhtdocs%2Fbagisto%2Fpackages%2FWebkul%2FShop%2Fsrc%2FResources%2Fviews%2Fcomponents%2Fform%2Fcontrol-group%2Flabel.blade.php\u0026line=1","ajax":false,"filename":"label.blade.php","line":"?"}},{"name":"shop::components.form.control-group.control","param_count":null,"params":[],"start":1782821512.83426,"type":"blade","hash":"bladeC:\\xampp\\htdocs\\bagisto\\packages\\Webkul\\Shop\\src\/resources\/views\/components\/form\/control-group\/control.blade.phpshop::components.form.control-group.control","xdebug_link":{"url":"phpstorm:\/\/open?file=C%3A%2Fxampp%2Fhtdocs%2Fbagisto%2Fpackages%2FWebkul%2FShop%2Fsrc%2FResources%2Fviews%2Fcomponents%2Fform%2Fcontrol-group%2Fcontrol.blade.php\u0026line=1","ajax":false,"filename":"control.blade.php","line":"?"}},{"name":"shop::components.form.control-group.error","param_count":null,"params":[],"start":1782821512.837484,"type":"blade","hash":"bladeC:\\xampp\\htdocs\\bagisto\\packages\\Webkul\\Shop\\src\/resources\/views\/components\/form\/control-group\/error.blade.phpshop::components.form.control-group.error","xdebug_link":{"url":"phpstorm:\/\/open?file=C%3A%2Fxampp%2Fhtdocs%2Fbagisto%2Fpackages%2FWebkul%2FShop%2Fsrc%2FResources%2Fviews%2Fcomponents%2Fform%2Fcontrol-group%2Ferror.blade.php\u0026line=1","ajax":false,"filename":"error.blade.php","line":"?"}},{"name":"shop::components.form.control-group.index","param_count":null,"params":[],"start":1782821512.839007,"type":"blade","hash":"bladeC:\\xampp\\htdocs\\bagisto\\packages\\Webkul\\Shop\\src\/resources\/views\/components\/form\/control-group\/index.blade.phpshop::components.form.control-group.index","xdebug_link":{"url":"phpstorm:\/\/open?file=C%3A%2Fxampp%2Fhtdocs%2Fbagisto%2Fpackages%2FWebkul%2FShop%2Fsrc%2FResources%2Fviews%2Fcomponents%2Fform%2Fcontrol-group%2Findex.blade.php\u0026line=1","ajax":false,"filename":"index.blade.php","line":"?"}},{"name":"shop::components.form.control-group.label","param_count":null,"params":[],"start":1782821512.840469,"type":"blade","hash":"bladeC:\\xampp\\htdocs\\bagisto\\packages\\Webkul\\Shop\\src\/resources\/views\/components\/form\/control-group\/label.blade.phpshop::components.form.control-group.label","xdebug_link":{"url":"phpstorm:\/\/open?file=C%3A%2Fxampp%2Fhtdocs%2Fbagisto%2Fpackages%2FWebkul%2FShop%2Fsrc%2FResources%2Fviews%2Fcomponents%2Fform%2Fcontrol-group%2Flabel.blade.php\u0026line=1","ajax":false,"filename":"label.blade.php","line":"?"}},{"name":"shop::components.form.control-group.control","param_count":null,"params":[],"start":1782821512.841855,"type":"blade","hash":"bladeC:\\xampp\\htdocs\\bagisto\\packages\\Webkul\\Shop\\src\/resources\/views\/components\/form\/control-group\/control.blade.phpshop::components.form.control-group.control","xdebug_link":{"url":"phpstorm:\/\/open?file=C%3A%2Fxampp%2Fhtdocs%2Fbagisto%2Fpackages%2FWebkul%2FShop%2Fsrc%2FResources%2Fviews%2Fcomponents%2Fform%2Fcontrol-group%2Fcontrol.blade.php\u0026line=1","ajax":false,"filename":"control.blade.php","line":"?"}},{"name":"shop::components.form.control-group.error","param_count":null,"params":[],"start":1782821512.84474,"type":"blade","hash":"bladeC:\\xampp\\htdocs\\bagisto\\packages\\Webkul\\Shop\\src\/resources\/views\/components\/form\/control-group\/error.blade.phpshop::components.form.control-group.error","xdebug_link":{"url":"phpstorm:\/\/open?file=C%3A%2Fxampp%2Fhtdocs%2Fbagisto%2Fpackages%2FWebkul%2FShop%2Fsrc%2FResources%2Fviews%2Fcomponents%2Fform%2Fcontrol-group%2Ferror.blade.php\u0026line=1","ajax":false,"filename":"error.blade.php","line":"?"}},{"name":"shop::components.form.control-group.index","param_count":null,"params":[],"start":1782821512.846524,"type":"blade","hash":"bladeC:\\xampp\\htdocs\\bagisto\\packages\\Webkul\\Shop\\src\/resources\/views\/components\/form\/control-group\/index.blade.phpshop::components.form.control-group.index","xdebug_link":{"url":"phpstorm:\/\/open?file=C%3A%2Fxampp%2Fhtdocs%2Fbagisto%2Fpackages%2FWebkul%2FShop%2Fsrc%2FResources%2Fviews%2Fcomponents%2Fform%2Fcontrol-group%2Findex.blade.php\u0026line=1","ajax":false,"filename":"index.blade.php","line":"?"}},{"name":"social_login::shop.customers.session.social-links","param_count":null,"params":[],"start":1782821512.85642,"type":"blade","hash":"bladeC:\\xampp\\htdocs\\bagisto\\packages\\Webkul\\SocialLogin\\src\/resources\/views\/shop\/customers\/session\/social-links.blade.phpsocial_login::shop.customers.session.social-links","xdebug_link":{"url":"phpstorm:\/\/open?file=C%3A%2Fxampp%2Fhtdocs%2Fbagisto%2Fpackages%2FWebkul%2FSocialLogin%2Fsrc%2FResources%2Fviews%2Fshop%2Fcustomers%2Fsession%2Fsocial-links.blade.php\u0026line=1","ajax":false,"filename":"social-links.blade.php","line":"?"}},{"name":"social_login::icons.facebook","param_count":null,"params":[],"start":1782821512.88048,"type":"blade","hash":"bladeC:\\xampp\\htdocs\\bagisto\\packages\\Webkul\\SocialLogin\\src\/resources\/views\/icons\/facebook.blade.phpsocial_login::icons.facebook","xdebug_link":{"url":"phpstorm:\/\/open?file=C%3A%2Fxampp%2Fhtdocs%2Fbagisto%2Fpackages%2FWebkul%2FSocialLogin%2Fsrc%2FResources%2Fviews%2Ficons%2Ffacebook.blade.php\u0026line=1","ajax":false,"filename":"facebook.blade.php","line":"?"}},{"name":"social_login::icons.twitter","param_count":null,"params":[],"start":1782821512.899405,"type":"blade","hash":"bladeC:\\xampp\\htdocs\\bagisto\\packages\\Webkul\\SocialLogin\\src\/resources\/views\/icons\/twitter.blade.phpsocial_login::icons.twitter","xdebug_link":{"url":"phpstorm:\/\/open?file=C%3A%2Fxampp%2Fhtdocs%2Fbagisto%2Fpackages%2FWebkul%2FSocialLogin%2Fsrc%2FResources%2Fviews%2Ficons%2Ftwitter.blade.php\u0026line=1","ajax":false,"filename":"twitter.blade.php","line":"?"}},{"name":"social_login::icons.google","param_count":null,"params":[],"start":1782821512.919481,"type":"blade","hash":"bladeC:\\xampp\\htdocs\\bagisto\\packages\\Webkul\\SocialLogin\\src\/resources\/views\/icons\/google.blade.phpsocial_login::icons.google","xdebug_link":{"url":"phpstorm:\/\/open?file=C%3A%2Fxampp%2Fhtdocs%2Fbagisto%2Fpackages%2FWebkul%2FSocialLogin%2Fsrc%2FResources%2Fviews%2Ficons%2Fgoogle.blade.php\u0026line=1","ajax":false,"filename":"google.blade.php","line":"?"}},{"name":"social_login::icons.github","param_count":null,"params":[],"start":1782821512.968628,"type":"blade","hash":"bladeC:\\xampp\\htdocs\\bagisto\\packages\\Webkul\\SocialLogin\\src\/resources\/views\/icons\/github.blade.phpsocial_login::icons.github","xdebug_link":{"url":"phpstorm:\/\/open?file=C%3A%2Fxampp%2Fhtdocs%2Fbagisto%2Fpackages%2FWebkul%2FSocialLogin%2Fsrc%2FResources%2Fviews%2Ficons%2Fgithub.blade.php\u0026line=1","ajax":false,"filename":"github.blade.php","line":"?"}},{"name":"shop::components.form.index","param_count":null,"params":[],"start":1782821512.971324,"type":"blade","hash":"bladeC:\\xampp\\htdocs\\bagisto\\packages\\Webkul\\Shop\\src\/resources\/views\/components\/form\/index.blade.phpshop::components.form.index","xdebug_link":{"url":"phpstorm:\/\/open?file=C%3A%2Fxampp%2Fhtdocs%2Fbagisto%2Fpackages%2FWebkul%2FShop%2Fsrc%2FResources%2Fviews%2Fcomponents%2Fform%2Findex.blade.php\u0026line=1","ajax":false,"filename":"index.blade.php","line":"?"}},{"name":"shop::components.layouts.index","param_count":null,"params":[],"start":1782821513.076384,"type":"blade","hash":"bladeC:\\xampp\\htdocs\\bagisto\\packages\\Webkul\\Shop\\src\/resources\/views\/components\/layouts\/index.blade.phpshop::components.layouts.index","xdebug_link":{"url":"phpstorm:\/\/open?file=C%3A%2Fxampp%2Fhtdocs%2Fbagisto%2Fpackages%2FWebkul%2FShop%2Fsrc%2FResources%2Fviews%2Fcomponents%2Flayouts%2Findex.blade.php\u0026line=1","ajax":false,"filename":"index.blade.php","line":"?"}},{"name":"shop::components.flash-group.index","param_count":null,"params":[],"start":1782821513.251835,"type":"blade","hash":"bladeC:\\xampp\\htdocs\\bagisto\\packages\\Webkul\\Shop\\src\/resources\/views\/components\/flash-group\/index.blade.phpshop::components.flash-group.index","xdebug_link":{"url":"phpstorm:\/\/open?file=C%3A%2Fxampp%2Fhtdocs%2Fbagisto%2Fpackages%2FWebkul%2FShop%2Fsrc%2FResources%2Fviews%2Fcomponents%2Fflash-group%2Findex.blade.php\u0026line=1","ajax":false,"filename":"index.blade.php","line":"?"}},{"name":"shop::components.flash-group.item","param_count":null,"params":[],"start":1782821513.254614,"type":"blade","hash":"bladeC:\\xampp\\htdocs\\bagisto\\packages\\Webkul\\Shop\\src\/resources\/views\/components\/flash-group\/item.blade.phpshop::components.flash-group.item","xdebug_link":{"url":"phpstorm:\/\/open?file=C%3A%2Fxampp%2Fhtdocs%2Fbagisto%2Fpackages%2FWebkul%2FShop%2Fsrc%2FResources%2Fviews%2Fcomponents%2Fflash-group%2Fitem.blade.php\u0026line=1","ajax":false,"filename":"item.blade.php","line":"?"}},{"name":"shop::components.flash-group.item","param_count":null,"params":[],"start":1782821513.256187,"type":"blade","hash":"bladeC:\\xampp\\htdocs\\bagisto\\packages\\Webkul\\Shop\\src\/resources\/views\/components\/flash-group\/item.blade.phpshop::components.flash-group.item","xdebug_link":{"url":"phpstorm:\/\/open?file=C%3A%2Fxampp%2Fhtdocs%2Fbagisto%2Fpackages%2FWebkul%2FShop%2Fsrc%2FResources%2Fviews%2Fcomponents%2Fflash-group%2Fitem.blade.php\u0026line=1","ajax":false,"filename":"item.blade.php","line":"?"}},{"name":"shop::components.modal.confirm","param_count":null,"params":[],"start":1782821513.257857,"type":"blade","hash":"bladeC:\\xampp\\htdocs\\bagisto\\packages\\Webkul\\Shop\\src\/resources\/views\/components\/modal\/confirm.blade.phpshop::components.modal.confirm","xdebug_link":{"url":"phpstorm:\/\/open?file=C%3A%2Fxampp%2Fhtdocs%2Fbagisto%2Fpackages%2FWebkul%2FShop%2Fsrc%2FResources%2Fviews%2Fcomponents%2Fmodal%2Fconfirm.blade.php\u0026line=1","ajax":false,"filename":"confirm.blade.php","line":"?"}},{"name":"core::blade.tracer.style","param_count":null,"params":[],"start":1782821513.271204,"type":"blade","hash":"bladeC:\\xampp\\htdocs\\bagisto\\packages\\Webkul\\Core\\src\/resources\/views\/blade\/tracer\/style.blade.phpcore::blade.tracer.style","xdebug_link":{"url":"phpstorm:\/\/open?file=C%3A%2Fxampp%2Fhtdocs%2Fbagisto%2Fpackages%2FWebkul%2FCore%2Fsrc%2FResources%2Fviews%2Fblade%2Ftracer%2Fstyle.blade.php\u0026line=1","ajax":false,"filename":"style.blade.php","line":"?"}},{"name":"paypal::checkout.onepage.paypal-smart-button","param_count":null,"params":[],"start":1782821513.273111,"type":"blade","hash":"bladeC:\\xampp\\htdocs\\bagisto\\packages\\Webkul\\Paypal\\src\/resources\/views\/checkout\/onepage\/paypal-smart-button.blade.phppaypal::checkout.onepage.paypal-smart-button","xdebug_link":{"url":"phpstorm:\/\/open?file=C%3A%2Fxampp%2Fhtdocs%2Fbagisto%2Fpackages%2FWebkul%2FPaypal%2Fsrc%2FResources%2Fviews%2Fcheckout%2Fonepage%2Fpaypal-smart-button.blade.php\u0026line=1","ajax":false,"filename":"paypal-smart-button.blade.php","line":"?"}},{"name":"shop::components.layouts.webmcp","param_count":null,"params":[],"start":1782821513.275655,"type":"blade","hash":"bladeC:\\xampp\\htdocs\\bagisto\\packages\\Webkul\\Shop\\src\/resources\/views\/components\/layouts\/webmcp.blade.phpshop::components.layouts.webmcp","xdebug_link":{"url":"phpstorm:\/\/open?file=C%3A%2Fxampp%2Fhtdocs%2Fbagisto%2Fpackages%2FWebkul%2FShop%2Fsrc%2FResources%2Fviews%2Fcomponents%2Flayouts%2Fwebmcp.blade.php\u0026line=1","ajax":false,"filename":"webmcp.blade.php","line":"?"}}]},"queries":{"count":7,"nb_statements":7,"nb_visible_statements":7,"nb_excluded_statements":0,"nb_failed_statements":0,"accumulated_duration":0.03553,"accumulated_duration_str":"35.53ms","memory_usage":0,"memory_usage_str":null,"statements":[{"sql":"select * from `sessions` where `id` = \u0027SmLw1AFlDcBfn2tt3j8rYfGjsOXoMWjpkPKaEv90\u0027 limit 1","type":"query","params":[],"bindings":["SmLw1AFlDcBfn2tt3j8rYfGjsOXoMWjpkPKaEv90"],"hints":null,"show_copy":true,"backtrace":[{"index":15,"namespace":null,"name":"vendor\/laravel\/framework\/src\/Illuminate\/Session\/DatabaseSessionHandler.php","file":"C:\\xampp\\htdocs\\bagisto\\vendor\\laravel\\framework\\src\\Illuminate\\Session\\DatabaseSessionHandler.php","line":96},{"index":16,"namespace":null,"name":"vendor\/laravel\/framework\/src\/Illuminate\/Session\/Store.php","file":"C:\\xampp\\htdocs\\bagisto\\vendor\\laravel\\framework\\src\\Illuminate\\Session\\Store.php","line":128},{"index":17,"namespace":null,"name":"vendor\/laravel\/framework\/src\/Illuminate\/Session\/Store.php","file":"C:\\xampp\\htdocs\\bagisto\\vendor\\laravel\\framework\\src\\Illuminate\\Session\\Store.php","line":116},{"index":18,"namespace":null,"name":"vendor\/laravel\/framework\/src\/Illuminate\/Session\/Store.php","file":"C:\\xampp\\htdocs\\bagisto\\vendor\\laravel\\framework\\src\\Illuminate\\Session\\Store.php","line":100},{"index":19,"namespace":null,"name":"vendor\/laravel\/framework\/src\/Illuminate\/Session\/Middleware\/StartSession.php","file":"C:\\xampp\\htdocs\\bagisto\\vendor\\laravel\\framework\\src\\Illuminate\\Session\\Middleware\\StartSession.php","line":146}],"start":1782821512.6309001,"duration":0.02732,"duration_str":"27.32ms","slow":false,"memory":0,"memory_str":null,"filename":"DatabaseSessionHandler.php:96","source":{"index":15,"namespace":null,"name":"vendor\/laravel\/framework\/src\/Illuminate\/Session\/DatabaseSessionHandler.php","file":"C:\\xampp\\htdocs\\bagisto\\vendor\\laravel\\framework\\src\\Illuminate\\Session\\DatabaseSessionHandler.php","line":96},"xdebug_link":{"url":"phpstorm:\/\/open?file=C%3A%2Fxampp%2Fhtdocs%2Fbagisto%2Fvendor%2Flaravel%2Fframework%2Fsrc%2FIlluminate%2FSession%2FDatabaseSessionHandler.php\u0026line=96","ajax":false,"filename":"DatabaseSessionHandler.php","line":"96"},"connection":"bagisto2","explain":null,"start_percent":0,"width_percent":76.893},{"sql":"select * from `channels` where `hostname` in (\u0027127.0.0.1:8000\u0027, \u0027http:\/\/127.0.0.1:8000\u0027, \u0027https:\/\/127.0.0.1:8000\u0027)","type":"query","params":[],"bindings":["127.0.0.1:8000","http:\/\/127.0.0.1:8000","https:\/\/127.0.0.1:8000"],"hints":null,"show_copy":true,"backtrace":[{"index":15,"namespace":null,"name":"vendor\/prettus\/l5-repository\/src\/Prettus\/Repository\/Eloquent\/BaseRepository.php","file":"C:\\xampp\\htdocs\\bagisto\\vendor\\prettus\\l5-repository\\src\\Prettus\\Repository\\Eloquent\\BaseRepository.php","line":578},{"index":16,"namespace":null,"name":"packages\/Webkul\/Core\/src\/Core.php","file":"C:\\xampp\\htdocs\\bagisto\\packages\\Webkul\\Core\\src\\Core.php","line":147},{"index":17,"namespace":"middleware","name":"theme","file":"C:\\xampp\\htdocs\\bagisto\\packages\\Webkul\\Shop\\src\\Http\\Middleware\\Theme.php","line":20},{"index":18,"namespace":null,"name":"vendor\/laravel\/framework\/src\/Illuminate\/Pipeline\/Pipeline.php","file":"C:\\xampp\\htdocs\\bagisto\\vendor\\laravel\\framework\\src\\Illuminate\\Pipeline\\Pipeline.php","line":219},{"index":19,"namespace":null,"name":"vendor\/laravel\/boost\/src\/Middleware\/InjectBoost.php","file":"C:\\xampp\\htdocs\\bagisto\\vendor\\laravel\\boost\\src\\Middleware\\InjectBoost.php","line":22}],"start":1782821512.702586,"duration":0.00122,"duration_str":"1.22ms","slow":false,"memory":0,"memory_str":null,"filename":"BaseRepository.php:578","source":{"index":15,"namespace":null,"name":"vendor\/prettus\/l5-repository\/src\/Prettus\/Repository\/Eloquent\/BaseRepository.php","file":"C:\\xampp\\htdocs\\bagisto\\vendor\\prettus\\l5-repository\\src\\Prettus\\Repository\\Eloquent\\BaseRepository.php","line":578},"xdebug_link":{"url":"phpstorm:\/\/open?file=C%3A%2Fxampp%2Fhtdocs%2Fbagisto%2Fvendor%2Fprettus%2Fl5-repository%2Fsrc%2FPrettus%2FRepository%2FEloquent%2FBaseRepository.php\u0026line=578","ajax":false,"filename":"BaseRepository.php","line":"578"},"connection":"bagisto2","explain":null,"start_percent":76.893,"width_percent":3.434},{"sql":"select * from `channels` limit 1","type":"query","params":[],"bindings":[],"hints":null,"show_copy":true,"backtrace":[{"index":18,"namespace":null,"name":"vendor\/prettus\/l5-repository\/src\/Prettus\/Repository\/Eloquent\/BaseRepository.php","file":"C:\\xampp\\htdocs\\bagisto\\vendor\\prettus\\l5-repository\\src\\Prettus\\Repository\\Eloquent\\BaseRepository.php","line":404},{"index":19,"namespace":null,"name":"packages\/Webkul\/Core\/src\/Core.php","file":"C:\\xampp\\htdocs\\bagisto\\packages\\Webkul\\Core\\src\\Core.php","line":154},{"index":20,"namespace":"middleware","name":"theme","file":"C:\\xampp\\htdocs\\bagisto\\packages\\Webkul\\Shop\\src\\Http\\Middleware\\Theme.php","line":20},{"index":21,"namespace":null,"name":"vendor\/laravel\/framework\/src\/Illuminate\/Pipeline\/Pipeline.php","file":"C:\\xampp\\htdocs\\bagisto\\vendor\\laravel\\framework\\src\\Illuminate\\Pipeline\\Pipeline.php","line":219},{"index":22,"namespace":null,"name":"vendor\/laravel\/boost\/src\/Middleware\/InjectBoost.php","file":"C:\\xampp\\htdocs\\bagisto\\vendor\\laravel\\boost\\src\\Middleware\\InjectBoost.php","line":22}],"start":1782821512.71394,"duration":0.00109,"duration_str":"1.09ms","slow":false,"memory":0,"memory_str":null,"filename":"BaseRepository.php:404","source":{"index":18,"namespace":null,"name":"vendor\/prettus\/l5-repository\/src\/Prettus\/Repository\/Eloquent\/BaseRepository.php","file":"C:\\xampp\\htdocs\\bagisto\\vendor\\prettus\\l5-repository\\src\\Prettus\\Repository\\Eloquent\\BaseRepository.php","line":404},"xdebug_link":{"url":"phpstorm:\/\/open?file=C%3A%2Fxampp%2Fhtdocs%2Fbagisto%2Fvendor%2Fprettus%2Fl5-repository%2Fsrc%2FPrettus%2FRepository%2FEloquent%2FBaseRepository.php\u0026line=404","ajax":false,"filename":"BaseRepository.php","line":"404"},"connection":"bagisto2","explain":null,"start_percent":80.326,"width_percent":3.068},{"sql":"select `locales`.*, `channel_locales`.`channel_id` as `pivot_channel_id`, `channel_locales`.`locale_id` as `pivot_locale_id` from `locales` inner join `channel_locales` on `locales`.`id` = `channel_locales`.`locale_id` where `channel_locales`.`channel_id` = 1","type":"query","params":[],"bindings":[1],"hints":null,"show_copy":true,"backtrace":[{"index":19,"namespace":null,"name":"vendor\/astrotomic\/laravel-translatable\/src\/Translatable\/Translatable.php","file":"C:\\xampp\\htdocs\\bagisto\\vendor\\astrotomic\\laravel-translatable\\src\\Translatable\\Translatable.php","line":174},{"index":21,"namespace":"middleware","name":"installer_locale","file":"C:\\xampp\\htdocs\\bagisto\\packages\\Webkul\\Shop\\src\\Http\\Middleware\\Locale.php","line":26},{"index":22,"namespace":null,"name":"vendor\/laravel\/framework\/src\/Illuminate\/Pipeline\/Pipeline.php","file":"C:\\xampp\\htdocs\\bagisto\\vendor\\laravel\\framework\\src\\Illuminate\\Pipeline\\Pipeline.php","line":219},{"index":23,"namespace":"middleware","name":"theme","file":"C:\\xampp\\htdocs\\bagisto\\packages\\Webkul\\Shop\\src\\Http\\Middleware\\Theme.php","line":33},{"index":24,"namespace":null,"name":"vendor\/laravel\/framework\/src\/Illuminate\/Pipeline\/Pipeline.php","file":"C:\\xampp\\htdocs\\bagisto\\vendor\\laravel\\framework\\src\\Illuminate\\Pipeline\\Pipeline.php","line":219}],"start":1782821512.7346659,"duration":0.00113,"duration_str":"1.13ms","slow":false,"memory":0,"memory_str":null,"filename":"Translatable.php:174","source":{"index":19,"namespace":null,"name":"vendor\/astrotomic\/laravel-translatable\/src\/Translatable\/Translatable.php","file":"C:\\xampp\\htdocs\\bagisto\\vendor\\astrotomic\\laravel-translatable\\src\\Translatable\\Translatable.php","line":174},"xdebug_link":{"url":"phpstorm:\/\/open?file=C%3A%2Fxampp%2Fhtdocs%2Fbagisto%2Fvendor%2Fastrotomic%2Flaravel-translatable%2Fsrc%2FTranslatable%2FTranslatable.php\u0026line=174","ajax":false,"filename":"Translatable.php","line":"174"},"connection":"bagisto2","explain":null,"start_percent":83.394,"width_percent":3.18},{"sql":"select * from `locales` where `locales`.`id` = 1 limit 1","type":"query","params":[],"bindings":[1],"hints":null,"show_copy":true,"backtrace":[{"index":20,"namespace":null,"name":"vendor\/astrotomic\/laravel-translatable\/src\/Translatable\/Translatable.php","file":"C:\\xampp\\htdocs\\bagisto\\vendor\\astrotomic\\laravel-translatable\\src\\Translatable\\Translatable.php","line":174},{"index":22,"namespace":"middleware","name":"installer_locale","file":"C:\\xampp\\htdocs\\bagisto\\packages\\Webkul\\Shop\\src\\Http\\Middleware\\Locale.php","line":34},{"index":23,"namespace":null,"name":"vendor\/laravel\/framework\/src\/Illuminate\/Pipeline\/Pipeline.php","file":"C:\\xampp\\htdocs\\bagisto\\vendor\\laravel\\framework\\src\\Illuminate\\Pipeline\\Pipeline.php","line":219},{"index":24,"namespace":"middleware","name":"theme","file":"C:\\xampp\\htdocs\\bagisto\\packages\\Webkul\\Shop\\src\\Http\\Middleware\\Theme.php","line":33},{"index":25,"namespace":null,"name":"vendor\/laravel\/framework\/src\/Illuminate\/Pipeline\/Pipeline.php","file":"C:\\xampp\\htdocs\\bagisto\\vendor\\laravel\\framework\\src\\Illuminate\\Pipeline\\Pipeline.php","line":219}],"start":1782821512.752229,"duration":0.0015300000000000001,"duration_str":"1.53ms","slow":false,"memory":0,"memory_str":null,"filename":"Translatable.php:174","source":{"index":20,"namespace":null,"name":"vendor\/astrotomic\/laravel-translatable\/src\/Translatable\/Translatable.php","file":"C:\\xampp\\htdocs\\bagisto\\vendor\\astrotomic\\laravel-translatable\\src\\Translatable\\Translatable.php","line":174},"xdebug_link":{"url":"phpstorm:\/\/open?file=C%3A%2Fxampp%2Fhtdocs%2Fbagisto%2Fvendor%2Fastrotomic%2Flaravel-translatable%2Fsrc%2FTranslatable%2FTranslatable.php\u0026line=174","ajax":false,"filename":"Translatable.php","line":"174"},"connection":"bagisto2","explain":null,"start_percent":86.575,"width_percent":4.306},{"sql":"select `currencies`.*, `channel_currencies`.`channel_id` as `pivot_channel_id`, `channel_currencies`.`currency_id` as `pivot_currency_id` from `currencies` inner join `channel_currencies` on `currencies`.`id` = `channel_currencies`.`currency_id` where `channel_currencies`.`channel_id` = 1","type":"query","params":[],"bindings":[1],"hints":null,"show_copy":true,"backtrace":[{"index":19,"namespace":null,"name":"vendor\/astrotomic\/laravel-translatable\/src\/Translatable\/Translatable.php","file":"C:\\xampp\\htdocs\\bagisto\\vendor\\astrotomic\\laravel-translatable\\src\\Translatable\\Translatable.php","line":174},{"index":21,"namespace":"middleware","name":"currency","file":"C:\\xampp\\htdocs\\bagisto\\packages\\Webkul\\Shop\\src\\Http\\Middleware\\Currency.php","line":26},{"index":22,"namespace":null,"name":"vendor\/laravel\/framework\/src\/Illuminate\/Pipeline\/Pipeline.php","file":"C:\\xampp\\htdocs\\bagisto\\vendor\\laravel\\framework\\src\\Illuminate\\Pipeline\\Pipeline.php","line":219},{"index":23,"namespace":"middleware","name":"installer_locale","file":"C:\\xampp\\htdocs\\bagisto\\packages\\Webkul\\Shop\\src\\Http\\Middleware\\Locale.php","line":41},{"index":24,"namespace":null,"name":"vendor\/laravel\/framework\/src\/Illuminate\/Pipeline\/Pipeline.php","file":"C:\\xampp\\htdocs\\bagisto\\vendor\\laravel\\framework\\src\\Illuminate\\Pipeline\\Pipeline.php","line":219}],"start":1782821512.760605,"duration":0.0021000000000000003,"duration_str":"2.1ms","slow":false,"memory":0,"memory_str":null,"filename":"Translatable.php:174","source":{"index":19,"namespace":null,"name":"vendor\/astrotomic\/laravel-translatable\/src\/Translatable\/Translatable.php","file":"C:\\xampp\\htdocs\\bagisto\\vendor\\astrotomic\\laravel-translatable\\src\\Translatable\\Translatable.php","line":174},"xdebug_link":{"url":"phpstorm:\/\/open?file=C%3A%2Fxampp%2Fhtdocs%2Fbagisto%2Fvendor%2Fastrotomic%2Flaravel-translatable%2Fsrc%2FTranslatable%2FTranslatable.php\u0026line=174","ajax":false,"filename":"Translatable.php","line":"174"},"connection":"bagisto2","explain":null,"start_percent":90.881,"width_percent":5.91},{"sql":"select * from `currencies` where `currencies`.`id` = 1 limit 1","type":"query","params":[],"bindings":[1],"hints":null,"show_copy":true,"backtrace":[{"index":20,"namespace":null,"name":"vendor\/astrotomic\/laravel-translatable\/src\/Translatable\/Translatable.php","file":"C:\\xampp\\htdocs\\bagisto\\vendor\\astrotomic\\laravel-translatable\\src\\Translatable\\Translatable.php","line":174},{"index":22,"namespace":"middleware","name":"currency","file":"C:\\xampp\\htdocs\\bagisto\\packages\\Webkul\\Shop\\src\\Http\\Middleware\\Currency.php","line":34},{"index":23,"namespace":null,"name":"vendor\/laravel\/framework\/src\/Illuminate\/Pipeline\/Pipeline.php","file":"C:\\xampp\\htdocs\\bagisto\\vendor\\laravel\\framework\\src\\Illuminate\\Pipeline\\Pipeline.php","line":219},{"index":24,"namespace":"middleware","name":"installer_locale","file":"C:\\xampp\\htdocs\\bagisto\\packages\\Webkul\\Shop\\src\\Http\\Middleware\\Locale.php","line":41},{"index":25,"namespace":null,"name":"vendor\/laravel\/framework\/src\/Illuminate\/Pipeline\/Pipeline.php","file":"C:\\xampp\\htdocs\\bagisto\\vendor\\laravel\\framework\\src\\Illuminate\\Pipeline\\Pipeline.php","line":219}],"start":1782821512.7707608,"duration":0.00114,"duration_str":"1.14ms","slow":false,"memory":0,"memory_str":null,"filename":"Translatable.php:174","source":{"index":20,"namespace":null,"name":"vendor\/astrotomic\/laravel-translatable\/src\/Translatable\/Translatable.php","file":"C:\\xampp\\htdocs\\bagisto\\vendor\\astrotomic\\laravel-translatable\\src\\Translatable\\Translatable.php","line":174},"xdebug_link":{"url":"phpstorm:\/\/open?file=C%3A%2Fxampp%2Fhtdocs%2Fbagisto%2Fvendor%2Fastrotomic%2Flaravel-translatable%2Fsrc%2FTranslatable%2FTranslatable.php\u0026line=174","ajax":false,"filename":"Translatable.php","line":"174"},"connection":"bagisto2","explain":null,"start_percent":96.791,"width_percent":3.209}]},"models":{"data":{"Webkul\\Core\\Models\\Locale":{"retrieved":2,"xdebug_link":{"url":"phpstorm:\/\/open?file=C%3A%2Fxampp%2Fhtdocs%2Fbagisto%2Fpackages%2FWebkul%2FCore%2Fsrc%2FModels%2FLocale.php\u0026line=1","ajax":false,"filename":"Locale.php","line":"?"}},"Webkul\\Core\\Models\\Currency":{"retrieved":2,"xdebug_link":{"url":"phpstorm:\/\/open?file=C%3A%2Fxampp%2Fhtdocs%2Fbagisto%2Fpackages%2FWebkul%2FCore%2Fsrc%2FModels%2FCurrency.php\u0026line=1","ajax":false,"filename":"Currency.php","line":"?"}},"Webkul\\Core\\Models\\Channel":{"retrieved":1,"xdebug_link":{"url":"phpstorm:\/\/open?file=C%3A%2Fxampp%2Fhtdocs%2Fbagisto%2Fpackages%2FWebkul%2FCore%2Fsrc%2FModels%2FChannel.php\u0026line=1","ajax":false,"filename":"Channel.php","line":"?"}}},"count":5,"key_map":{"retrieved":"Retrieved","created":"Created","updated":"Updated","deleted":"Deleted"},"is_counter":true,"badges":{"retrieved":5}},"symfonymailer_mails":{"count":0,"mails":[]},"gate":{"count":0,"messages":[]},"request":{"data":{"status":"200 OK","full_url":"http:\/\/127.0.0.1:8000\/customer\/login","action_name":"shop.customer.session.index","controller_action":"Webkul\\Shop\\Http\\Controllers\\Customer\\SessionController@index","uri":"GET customer\/login","controller":{"value":"Webkul\\Shop\\Http\\Controllers\\Customer\\SessionController@index","xdebug_link":{"url":"phpstorm:\/\/open?file=C%3A%2Fxampp%2Fhtdocs%2Fbagisto%2Fpackages%2FWebkul%2FShop%2Fsrc%2FHttp%2FControllers%2FCustomer%2FSessionController.php\u0026line=20","ajax":false,"filename":"SessionController.php","line":"20"}},"prefix":"customer\/login","file":{"value":"packages\/Webkul\/Shop\/src\/Http\/Controllers\/Customer\/SessionController.php:20-27","xdebug_link":{"url":"phpstorm:\/\/open?file=C%3A%2Fxampp%2Fhtdocs%2Fbagisto%2Fpackages%2FWebkul%2FShop%2Fsrc%2FHttp%2FControllers%2FCustomer%2FSessionController.php\u0026line=20","ajax":false,"filename":"SessionController.php","line":"20"}},"middleware":"web, shop, Webkul\\Core\\Http\\Middleware\\PreventRequestsDuringMaintenance","duration":"1.95s","peak_memory":"46MB","response":"text\/html; charset=utf-8","request_format":"html","request_query":"\u003Cpre class=sf-dump id=sf-dump-323942108 data-indent-pad=\u0022  \u0022\u003E[]\n\u003C\/pre\u003E\u003Cscript\u003ESfdump(\u0022sf-dump-323942108\u0022, {\u0022maxDepth\u0022:0})\u003C\/script\u003E\n","request_request":"\u003Cpre class=sf-dump id=sf-dump-302923970 data-indent-pad=\u0022  \u0022\u003E[]\n\u003C\/pre\u003E\u003Cscript\u003ESfdump(\u0022sf-dump-302923970\u0022, {\u0022maxDepth\u0022:0})\u003C\/script\u003E\n","request_headers":"\u003Cpre class=sf-dump id=sf-dump-1597415265 data-indent-pad=\u0022  \u0022\u003E\u003Cspan class=sf-dump-note\u003Earray:3\u003C\/span\u003E [\u003Csamp data-depth=1 class=sf-dump-expanded\u003E\n  \u0022\u003Cspan class=sf-dump-key\u003Ehost\u003C\/span\u003E\u0022 =\u003E \u003Cspan class=sf-dump-note\u003Earray:1\u003C\/span\u003E [\u003Csamp data-depth=2 class=sf-dump-compact\u003E\n    \u003Cspan class=sf-dump-index\u003E0\u003C\/span\u003E =\u003E \u0022\u003Cspan class=sf-dump-str title=\u002214 characters\u0022\u003E127.0.0.1:8000\u003C\/span\u003E\u0022\n  \u003C\/samp\u003E]\n  \u0022\u003Cspan class=sf-dump-key\u003Euser-agent\u003C\/span\u003E\u0022 =\u003E \u003Cspan class=sf-dump-note\u003Earray:1\u003C\/span\u003E [\u003Csamp data-depth=2 class=sf-dump-compact\u003E\n    \u003Cspan class=sf-dump-index\u003E0\u003C\/span\u003E =\u003E \u0022\u003Cspan class=sf-dump-str title=\u002211 characters\u0022\u003Ecurl\/8.11.0\u003C\/span\u003E\u0022\n  \u003C\/samp\u003E]\n  \u0022\u003Cspan class=sf-dump-key\u003Eaccept\u003C\/span\u003E\u0022 =\u003E \u003Cspan class=sf-dump-note\u003Earray:1\u003C\/span\u003E [\u003Csamp data-depth=2 class=sf-dump-compact\u003E\n    \u003Cspan class=sf-dump-index\u003E0\u003C\/span\u003E =\u003E \u0022\u003Cspan class=sf-dump-str title=\u00223 characters\u0022\u003E*\/*\u003C\/span\u003E\u0022\n  \u003C\/samp\u003E]\n\u003C\/samp\u003E]\n\u003C\/pre\u003E\u003Cscript\u003ESfdump(\u0022sf-dump-1597415265\u0022, {\u0022maxDepth\u0022:0})\u003C\/script\u003E\n","request_cookies":"\u003Cpre class=sf-dump id=sf-dump-30942304 data-indent-pad=\u0022  \u0022\u003E[]\n\u003C\/pre\u003E\u003Cscript\u003ESfdump(\u0022sf-dump-30942304\u0022, {\u0022maxDepth\u0022:0})\u003C\/script\u003E\n","response_headers":"\u003Cpre class=sf-dump id=sf-dump-819738508 data-indent-pad=\u0022  \u0022\u003E\u003Cspan class=sf-dump-note\u003Earray:3\u003C\/span\u003E [\u003Csamp data-depth=1 class=sf-dump-expanded\u003E\n  \u0022\u003Cspan class=sf-dump-key\u003Econtent-type\u003C\/span\u003E\u0022 =\u003E \u003Cspan class=sf-dump-note\u003Earray:1\u003C\/span\u003E [\u003Csamp data-depth=2 class=sf-dump-compact\u003E\n    \u003Cspan class=sf-dump-index\u003E0\u003C\/span\u003E =\u003E \u0022\u003Cspan class=sf-dump-str title=\u002224 characters\u0022\u003Etext\/html; charset=utf-8\u003C\/span\u003E\u0022\n  \u003C\/samp\u003E]\n  \u0022\u003Cspan class=sf-dump-key\u003Ecache-control\u003C\/span\u003E\u0022 =\u003E \u003Cspan class=sf-dump-note\u003Earray:1\u003C\/span\u003E [\u003Csamp data-depth=2 class=sf-dump-compact\u003E\n    \u003Cspan class=sf-dump-index\u003E0\u003C\/span\u003E =\u003E \u0022\u003Cspan class=sf-dump-str title=\u002217 characters\u0022\u003Eno-cache, private\u003C\/span\u003E\u0022\n  \u003C\/samp\u003E]\n  \u0022\u003Cspan class=sf-dump-key\u003Edate\u003C\/span\u003E\u0022 =\u003E \u003Cspan class=sf-dump-note\u003Earray:1\u003C\/span\u003E [\u003Csamp data-depth=2 class=sf-dump-compact\u003E\n    \u003Cspan class=sf-dump-index\u003E0\u003C\/span\u003E =\u003E \u0022\u003Cspan class=sf-dump-str title=\u002229 characters\u0022\u003ETue, 30 Jun 2026 12:11:52 GMT\u003C\/span\u003E\u0022\n  \u003C\/samp\u003E]\n\u003C\/samp\u003E]\n\u003C\/pre\u003E\u003Cscript\u003ESfdump(\u0022sf-dump-819738508\u0022, {\u0022maxDepth\u0022:0})\u003C\/script\u003E\n","session_attributes":"\u003Cpre class=sf-dump id=sf-dump-819033123 data-indent-pad=\u0022  \u0022\u003E\u003Cspan class=sf-dump-note\u003Earray:3\u003C\/span\u003E [\u003Csamp data-depth=1 class=sf-dump-expanded\u003E\n  \u0022\u003Cspan class=sf-dump-key\u003E_token\u003C\/span\u003E\u0022 =\u003E \u0022\u003Cspan class=sf-dump-str title=\u002240 characters\u0022\u003EjubsPtb0f2t0GVqmQqlsPxj6dZVMHdQIZA5f8406\u003C\/span\u003E\u0022\n  \u0022\u003Cspan class=sf-dump-key\u003Elocale\u003C\/span\u003E\u0022 =\u003E \u0022\u003Cspan class=sf-dump-str title=\u00222 characters\u0022\u003Eid\u003C\/span\u003E\u0022\n  \u0022\u003Cspan class=sf-dump-key\u003Ecurrency\u003C\/span\u003E\u0022 =\u003E \u0022\u003Cspan class=sf-dump-str title=\u00223 characters\u0022\u003EIDR\u003C\/span\u003E\u0022\n\u003C\/samp\u003E]\n\u003C\/pre\u003E\u003Cscript\u003ESfdump(\u0022sf-dump-819033123\u0022, {\u0022maxDepth\u0022:0})\u003C\/script\u003E\n"},"tooltip":{"status":"200 OK","full_url":"http:\/\/127.0.0.1:8000\/customer\/login","action_name":"shop.customer.session.index","controller_action":"Webkul\\Shop\\Http\\Controllers\\Customer\\SessionController@index"},"badge":null}}, "01KWC72T2F8ZJXNCD30HCNF8F8");
+
+</script>
+</body>
+</html>
